@@ -24,7 +24,6 @@
 
         .container { max-width: 750px; margin: 0 auto; padding: 5rem 1.5rem; }
 
-        /* --- Header with Profile Picture --- */
         header { 
             display: flex; 
             align-items: center; 
@@ -56,7 +55,6 @@
         }
         .links a:hover { border-color: var(--text-color); }
 
-        /* --- Sections --- */
         section { margin-bottom: 4rem; }
         h2 {
             font-size: 0.85rem;
@@ -133,11 +131,11 @@
             </div>
             <div class="org">Amazon Connectivity Team</div>
             <ul>
-                <li>Led wireless system bring-up (Wi-Fi/BLE) on next-gen embedded systems, consolidating chipset BSPs and SDKs across vendors for NPI projects.</li>
-                <li>Architected a modular BLE setup subsystem from scratch, featuring dynamic country code configuration for global SKU deployment.</li>
-                <li>Designed DHCP enhancements achieving 76% faster reconnection and 69% improved performance in unstable network environments.</li>
-                <li>Fine-tuned WMM QoS parameters (EDCA) to optimize network performance for latency-sensitive streaming.</li>
-                <li>Developed Wi-Fi power-saving features and wake-up pattern management to extend IoT device battery life.</li>
+                <li>Led wireless system bring-up (Wi-Fi/BLE) for next-gen embedded systems, consolidating chipset BSPs and SDKs across vendors for NPI projects[cite: 17].</li>
+                <li>Architected a modular BLE setup subsystem from scratch, featuring dynamic country code configuration for global SKU deployment[cite: 18].</li>
+                <li>Designed DHCP enhancements achieving 76% faster reconnection and 69% improved performance in unstable network environments[cite: 20].</li>
+                <li>Fine-tuned WMM QoS parameters (EDCA) to optimize network performance for latency-sensitive streaming[cite: 21].</li>
+                <li>Developed Wi-Fi power-saving features and wake-up pattern management to extend IoT device battery life[cite: 23].</li>
             </ul>
         </div>
 
@@ -148,9 +146,9 @@
             </div>
             <div class="org">Amazon Connectivity Team</div>
             <ul>
-                <li>Redesigned priority-oriented wireless connection logic to ensure consistency across IoT devices.</li>
-                <li>Resolved over 20 critical connectivity issues during new product development phases.</li>
-                <li>Built diagnostic tools to accelerate troubleshooting and enhanced interoperability testing across 60+ router models.</li>
+                <li>Redesigned priority-oriented wireless connection logic to ensure consistency across IoT devices[cite: 30].</li>
+                <li>Resolved over 20 critical connectivity issues during new product development phases[cite: 31].</li>
+                <li>Built diagnostic tools for interoperability testing across 60+ router models[cite: 32].</li>
             </ul>
         </div>
     </section>
@@ -160,30 +158,30 @@
 
         <div class="item">
             <div class="item-header">
+                <span class="title">Implementation of Secure Channel for Intelligent Manufacturing</span>
+                <span class="date">2022</span>
+            </div>
+            <div class="org">1st Author | Cryptology and Information Security Conference (CISC)</div>
+            <ul>
+                <li>Published research on securing communication between on-premise industrial devices and AWS Cloud[cite: 44, 45].</li>
+                <li>Implemented site-to-site IPsec secure channels and conducted deep packet inspection via Wireshark to verify protocol security[cite: 45, 46].</li>
+                <li>Analyzed network performance using iPerf3/Netperf and researched ARMv8 hardware acceleration for cryptographic operations[cite: 46, 47].</li>
+            </ul>
+            <div class="tech-stack">Stack: IPsec, AWS VPC, ARMv8 Cryptography, Wireshark, iPerf3</div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
                 <span class="title">Anti-Evasion Techniques in Cuckoo Monitor</span>
                 <span class="date">Jul 2022 – Aug 2022</span>
             </div>
             <div class="org">Research Intern @ Academia Sinica</div>
             <ul>
-                <li>Reverse-engineered obfuscated malware using IDA Pro to uncover hidden malicious behaviors and evasion triggers.</li>
-                <li>Researched sandbox/VM evasion techniques (registry and hardware checks) and improved Cuckoo Sandbox logging.</li>
-                <li>Developed a modular framework for adding new evasion detection methods, enhancing system adaptability.</li>
+                <li>Reverse-engineered obfuscated malware using IDA Pro to uncover hidden malicious behaviors and sandbox evasion triggers[cite: 38].</li>
+                <li>Researched sandbox/VM evasion techniques involving registry and hardware checks to improve detection accuracy[cite: 39].</li>
+                <li>Developed a modular framework for adding new evasion detection methods to Cuckoo Sandbox, enhancing logging adaptability[cite: 39, 40].</li>
             </ul>
-            <div class="tech-stack">Stack: C, Python, IDA Pro, Cuckoo Sandbox</div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title">Secure Channels for Intelligent Manufacturing</span>
-                <span class="date">Jul 2021 – Feb 2022</span>
-            </div>
-            <div class="org">1st Author | MOST Research Project</div>
-            <ul>
-                <li>Implemented site-to-site IPsec secure channels linking on-premise devices to AWS Cloud for manufacturing systems.</li>
-                <li>Conducted performance analysis (throughput and latency) using iPerf3/Netperf and verified protocol security via Wireshark.</li>
-                <li>Investigated ARMv8 hardware acceleration for cryptographic operations on embedded devices.</li>
-            </ul>
-            <div class="tech-stack">Stack: Linux, AWS, IPsec, Wireshark, ARMv8</div>
+            <div class="tech-stack">Stack: C, Python, IDA Pro, Cuckoo Sandbox, Malware Analysis</div>
         </div>
 
         <div class="item">
@@ -193,10 +191,10 @@
             </div>
             <div class="org">Team Developer | Senior Capstone Project</div>
             <ul>
-                <li>Developed a real-time billiards guidance system using BFS-based reflection algorithms to calculate and project AR trajectories.</li>
+                <li>Developed a real-time billiards guidance system using BFS-based reflection algorithms to project AR trajectories.</li>
                 <li>Integrated Unity MRTK to provide intuitive aiming assistance directly on the physical table environment.</li>
             </ul>
-            <div class="tech-stack">Stack: Algorithms, Problem Solving, Unity MRTK</div>
+            <div class="tech-stack">Stack: Unity3D, C#, HoloLens 2, MRTK, BFS Algorithms</div>
         </div>
     </section>
 
@@ -204,15 +202,15 @@
         <h2>Technical Skills</h2>
         <div class="skills-grid">
             <div class="category">Domains</div>
-            <div>Wireless Protocols (Wi-Fi/BLE), Embedded Systems, IoT, Network Security</div>
+            <div>Wireless Protocols (Wi-Fi/BLE), Embedded Systems, IoT, Network Security [cite: 58, 59]</div>
         </div>
         <div class="skills-grid">
             <div class="category">Languages</div>
-            <div>C/C++, Python</div>
+            <div>C/C++, Python [cite: 60]</div>
         </div>
         <div class="skills-grid">
             <div class="category">Tools</div>
-            <div>FreeRTOS, Linux, Wireshark, Git, JTAG/GDB</div>
+            <div>FreeRTOS, Linux, Wireshark, Git, JTAG/GDB [cite: 61]</div>
         </div>
     </section>
 
@@ -222,7 +220,7 @@
             <span class="title">National Taiwan University of Science and Technology</span>
             <span class="date">2019 – 2023</span>
         </div>
-        <div class="meta">B.B.A. in Information Management | GPA 4.01/4.30 | 3x Academic Excellence Award</div>
+        <div class="meta">B.B.A. in Information Management | GPA 4.01/4.30 | 3x Academic Excellence Award [cite: 7, 8, 12]</div>
     </section>
 
     <footer>
