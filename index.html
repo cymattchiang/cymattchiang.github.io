@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matt Chiang | Software Development Engineer</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --secondary-color: #666666;
+            --accent-color: #0070f3;
+            --border-color: #eeeeee;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0; padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 750px; margin: 0 auto; padding: 5rem 1.5rem; }
+
+        header { margin-bottom: 4rem; }
+        h1 { font-size: 2rem; font-weight: 700; margin: 0; letter-spacing: -0.03em; }
+        .meta { color: var(--secondary-color); font-size: 1rem; margin-top: 0.5rem; }
+        .links { margin-top: 1.2rem; }
+        .links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-right: 1.2rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: 0.2s;
+        }
+        .links a:hover { border-color: var(--text-color); }
+
+        section { margin-bottom: 4rem; }
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .item { margin-bottom: 2.5rem; }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+        .title { font-weight: 600; font-size: 1.1rem; }
+        .date { font-size: 0.85rem; color: var(--secondary-color); font-family: monospace; }
+        .org { color: var(--accent-color); font-size: 0.95rem; font-weight: 500; margin-bottom: 0.5rem; }
+        
+        ul { padding-left: 1.2rem; margin: 0.5rem 0; list-style-type: square; }
+        li { font-size: 0.9rem; margin-bottom: 0.5rem; color: #333; }
+        .tech-stack { font-size: 0.8rem; color: var(--secondary-color); margin-top: 0.5rem; font-family: monospace; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        .category { font-weight: 600; color: var(--secondary-color); }
+
+        footer {
+            margin-top: 6rem;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .item-header { flex-direction: column; }
+            .date { margin-top: 0.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Matt Chiang</h1>
+        <p class="meta">Software Development Engineer @ Amazon | Wireless Systems & Security</p>
+        <div class="links">
+            <a href="mailto:cymattchiang@gmail.com">Email</a>
+            <a href="https://github.com/mattcy0514" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/cymattchiang/" target="_blank">LinkedIn</a>
+        </div>
+    </header>
+
+    <section id="experience">
+        <h2>Professional Experience</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="title">Software Development Engineer I</span>
+                <span class="date">Aug 2023 – Dec 2025</span>
+            </div>
+            <div class="org">Amazon Connectivity Team</div>
+            <ul>
+                <li>Led wireless system bring-up (Wi-Fi/BLE) on next-gen embedded systems, consolidating chipset BSPs and SDKs across vendors for NPI projects.</li>
+                <li>Architected a modular BLE setup subsystem from scratch, featuring dynamic country code configuration for global SKU deployment.</li>
+                <li>Designed DHCP enhancements achieving 76% faster reconnection and 69% improved performance in unstable network environments.</li>
+                <li>Fine-tuned WMM QoS parameters (EDCA) to optimize network performance for latency-sensitive streaming.</li>
+                <li>Developed Wi-Fi power-saving features and wake-up pattern management to extend IoT device battery life.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="title">Software Development Engineer Intern</span>
+                <span class="date">Sep 2022 – Jul 2023</span>
+            </div>
+            <div class="org">Amazon Connectivity Team</div>
+            <ul>
+                <li>Redesigned priority-oriented wireless connection logic to ensure consistency across IoT devices.</li>
+                <li>Resolved over 20 critical connectivity issues during new product development phases.</li>
+                <li>Built diagnostic tools to accelerate troubleshooting and enhanced interoperability testing across 60+ router models.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Research & Publications</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="title">Anti-Evasion Techniques in Cuckoo Monitor</span>
+                <span class="date">Jul 2022 – Aug 2022</span>
+            </div>
+            <div class="org">Research Intern @ Academia Sinica</div>
+            <ul>
+                <li>Reverse-engineered obfuscated malware using IDA Pro to uncover hidden malicious behaviors and evasion triggers.</li>
+                <li>Researched sandbox/VM evasion techniques (registry and hardware checks) and improved Cuckoo Sandbox logging.</li>
+                <li>Developed a modular framework for adding new evasion detection methods, enhancing system adaptability.</li>
+            </ul>
+            <div class="tech-stack">Stack: C, Python, IDA Pro, Cuckoo Sandbox</div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="title">Secure Channels for Intelligent Manufacturing</span>
+                <span class="date">Jul 2021 – Feb 2022</span>
+            </div>
+            <div class="org">1st Author | MOST Research Project</div>
+            <ul>
+                <li>Implemented site-to-site IPsec secure channels linking on-premise devices to AWS Cloud for manufacturing systems.</li>
+                <li>Conducted performance analysis (throughput and latency) using iPerf3/Netperf and verified protocol security via Wireshark.</li>
+                <li>Investigated ARMv8 hardware acceleration for cryptographic operations on embedded devices.</li>
+            </ul>
+            <div class="tech-stack">Stack: Linux, AWS, IPsec, Wireshark, ARMv8</div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="title">Billiards Guidance via HoloLens 2</span>
+                <span class="date">Jul 2021 – May 2022</span>
+            </div>
+            <div class="org">Lead Developer | Senior Capstone Project</div>
+            <ul>
+                <li>Developed a real-time billiards guidance system using BFS-based reflection algorithms to calculate and project AR trajectories.</li>
+                <li>Integrated Unity MRTK to provide intuitive aiming assistance directly on the physical table environment.</li>
+            </ul>
+            <div class="tech-stack">Stack: Unity3D, C#, HoloLens 2, MRTK</div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="category">Domains</div>
+            <div>Wireless Protocols (Wi-Fi/BLE), Embedded Systems, IoT, Network Security</div>
+        </div>
+        <div class="skills-grid">
+            <div class="category">Languages</div>
+            <div>C/C++, Python, C#, Java, SQL</div>
+        </div>
+        <div class="skills-grid">
+            <div class="category">Tools</div>
+            <div>FreeRTOS, Linux, AWS, Wireshark, Git, JTAG/GDB, IDA Pro</div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="item-header">
+            <span class="title">National Taiwan University of Science and Technology</span>
+            <span class="date">2019 – 2023</span>
+        </div>
+        <div class="meta">B.B.A. in Information Management | GPA 4.01/4.30 | 3x Academic Excellence Award</div>
+    </section>
+
+    <footer>
+        &copy; 2025 Matt Chiang. Built with a focus on clarity and precision.
+    </footer>
+</div>
+
+</body>
+</html>
