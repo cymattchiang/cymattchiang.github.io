@@ -83,6 +83,8 @@
         ul { padding-left: 1.2rem; margin: 0.5rem 0; list-style-type: square; }
         li { font-size: 0.9rem; margin-bottom: 0.5rem; color: #333; }
         .tech-stack { font-size: 0.8rem; color: var(--secondary-color); margin-top: 0.6rem; font-family: monospace; }
+        .tech-stack a { color: var(--secondary-color); text-decoration: none; border-bottom: 1px solid var(--border-color); transition: 0.2s; }
+        .tech-stack a:hover { color: var(--text-color); border-color: var(--text-color); }
 
         .skills-grid {
             display: grid;
@@ -132,11 +134,12 @@
         <img src="profile.jpg" alt="Matt Chiang" class="profile-pic">
         <div class="header-text">
             <h1>Chung-Yen (Matt) Chiang</h1>
-            <p class="meta">Software Development Engineer @ Amazon | Wireless Systems & Security</p>
+            <p class="meta">Software Development Engineer @ Amazon | Taipei, Taiwan</p>
             <div class="links">
                 <a href="mailto:cymattchiang@gmail.com">Email</a>
                 <a href="https://github.com/cymattchiang" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/cymattchiang/" target="_blank">LinkedIn</a>
+                <a href="resume-cv.pdf" target="_blank">Resume & CV</a>
                 <a href="https://medium.com/@cymattchiang" target="_blank">Medium</a>
             </div>
         </div>
@@ -150,13 +153,14 @@
                 <span class="title">Software Development Engineer I (L4)</span>
                 <span class="date">Aug 2023 – Present</span>
             </div>
-            <div class="org">Amazon Connectivity Team</div>
+            <div class="org">Amazon - Connectivity Team</div>
             <ul>
-                <li>Led wireless bring-up (Wi-Fi/BLE) for embedded systems (FreeRTOS), consolidating chipset BSPs and SDKs across next-gen ASIC and wireless vendors for NPI projects.</li>
-                <li>Implemented a modular BLE setup subsystem from scratch, featuring E2E encryption channel and dynamic country code configuration for global SKU deployment.</li>
-                <li>Designed DHCP statistics and enhancements achieving 76% faster reconnection and 69% improved performance in unstable network environments.</li>
-                <li>Fine-tuned WMM QoS parameters (EDCA) to optimize network performance for latency-sensitive streaming.</li>
-                <li>Developed Wi-Fi power-saving features and wake-up pattern management to extend battery life.</li>
+                <li>Led wireless bring-up (Wi-Fi/BLE) for embedded systems on FreeRTOS, consolidating chipset BSPs and SDKs across multiple next-gen ASIC and wireless vendors for NPI projects.</li>
+                <li>Developed a modular BLE setup subsystem from scratch, incorporating an E2E encryption channel and dynamic country code configuration for global SKU deployment.</li>
+                <li>Optimized DHCP reconnection logic, achieving a 76% reduction in latency and 69% performance gain in unstable network environments.</li>
+                <li>Fine-tuned WMM QoS (EDCA) parameters to prioritize latency-sensitive traffic for high-fidelity streaming services.</li>
+                <li>Implemented advanced Wi-Fi power-saving mechanisms and wake-up patterns, significantly extending battery-operated IoT device longevity.</li>
+                <li>Collaborated with cross-functional teams to align firmware implementations with global wireless regulatory and compliance standards.</li>
             </ul>
         </div>
 
@@ -165,68 +169,66 @@
                 <span class="title">Software Development Engineer Intern</span>
                 <span class="date">Sep 2022 – Jul 2023</span>
             </div>
-            <div class="org">Amazon Connectivity Team</div>
+            <div class="org">Amazon - Connectivity Team</div>
             <ul>
-                <li>Redesigned priority-oriented wireless connection logic to ensure consistency across IoT devices.</li>
-                <li>Resolved over 20 critical connectivity issues during product development phases.</li>
-                <li>Built diagnostic tools to accelerate troubleshooting and enhanced interoperability testing across 60+ router models.</li>
+                <li>Refined priority-based connection management logic to improve connectivity consistency across diverse IoT ecosystems.</li>
+                <li>Debugged and resolved 20+ critical firmware issues during the validation phase of major product launches.</li>
+                <li>Developed automated diagnostic tools for interoperability testing with 60+ commercial router models.</li>
             </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="title">Research Intern</span>
+                <span class="date">Jul 2022 – Aug 2022</span>
+            </div>
+            <div class="org">Academia Sinica – Institute of Information Science (Advised by Prof. Meng Chang Chen)</div>
+            <ul>
+                <li>Reverse-engineered obfuscated malware using IDA Pro to identify sandbox evasion triggers and anti-analysis behaviors.</li>
+                <li>Researched hardware-level evasion techniques (CPU/Registry checks) to improve the detection accuracy of analysis environments.</li>
+                <li>Implemented a modular detection framework in C and Python to enhance the flexibility of the Cuckoo Sandbox monitor.</li>
+            </ul>
+            <div class="tech-stack">Paper: <a href="thesis/thesis-abstract-academia-sinica-english.pdf" target="_blank">English Abstract ↗</a></div>
         </div>
     </section>
 
     <section id="research">
-        <h2>Research & Publications</h2>
+        <h2>Research & Projects</h2>
 
         <div class="item">
             <div class="item-header">
                 <span class="title">
                     <a href="https://github.com/cymattchiang/undergraduate-research-thesis" target="_blank">
-                        Implementation of Secure Channel for Intelligent Manufacturing <span class="external-link-icon">↗</span>
+                        Implementation Analysis of Secure Channels for Smart Manufacturing Systems in Cloud Environments <span class="external-link-icon">↗</span>
                     </a>
                 </span>
                 <span class="date">Jul 2021 – Feb 2022</span>
             </div>
-            <div class="org">1st Author | Cryptology and Information Security Conference (CISC)</div>
+            <div class="org">1st Author - Cryptology and Information Security Conference 2022 | 1st Author - MOST Scholarship (Advised by Prof. Nai Wei Lo)</div>
             <ul>
-                <li>Published research on securing communication between industrial devices and AWS Cloud using Site-to-Site IPsec channels.</li>
-                <li>Verified protocol security via deep packet analysis with Wireshark and conducted performance analysis using iPerf3 and Netperf.</li>
-                <li>Investigated ARMv8 hardware acceleration for cryptographic operations on embedded devices.</li>
+                <li>Awarded the Undergraduate Research Scholarship by the Ministry of Science and Technology for excellence in secure systems research.</li>
+                <li>Researched and implemented Site-to-Site IPsec secure channels for industrial communication between local gateways and AWS VPC.</li>
+                <li>Conducted deep packet inspection (DPI) with Wireshark and benchmarked performance using iPerf3 and Netperf.</li>
+                <li>Investigated ARMv8 Cryptographic Extensions to accelerate encryption/decryption on resource-constrained devices.</li>
             </ul>
             <div class="tech-stack">Stack: IPsec, AWS VPC, ARMv8 Cryptography, Wireshark, iPerf3</div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title">
-                    <a href="https://github.com/cymattchiang/iis-sinica-report" target="_blank">
-                        Anti-Evasion Techniques in Cuckoo Monitor <span class="external-link-icon">↗</span>
-                    </a>
-                </span>
-                <span class="date">Jul 2022 – Aug 2022</span>
-            </div>
-            <div class="org">Research Intern | Academia Sinica</div>
-            <ul>
-                <li>Reverse-engineered obfuscated malware using IDA Pro to uncover hidden behaviors and sandbox evasion triggers.</li>
-                <li>Researched sandbox/VM evasion techniques involving registry and hardware checks to improve detection accuracy.</li>
-                <li>Developed a modular framework for adding new evasion detection methods to enhance adaptability.</li>
-            </ul>
-            <div class="tech-stack">Stack: C, Python, IDA Pro, Cuckoo Sandbox, Malware Analysis</div>
+            <div class="tech-stack">Papers: <a href="thesis/thesis-abstract-most-cisc-english.pdf" target="_blank">English Abstract ↗</a> · <a href="thesis/thesis-full-cisc-chinese.pdf" target="_blank">CISC Full Paper ↗</a> · <a href="thesis/thesis-full-most-chinese.pdf" target="_blank">MOST Full Paper ↗</a></div>
         </div>
 
         <div class="item">
             <div class="item-header">
                 <span class="title">
                     <a href="https://github.com/cymattchiang/special-topics-pool" target="_blank">
-                        Billiards Guidance via HoloLens 2 <span class="external-link-icon">↗</span>
+                        Billiards Guidance with HoloLens 2 <span class="external-link-icon">↗</span>
                     </a>
                 </span>
                 <span class="date">Jul 2021 – May 2022</span>
             </div>
-            <div class="org">Team Developer | Senior Capstone Project</div>
+            <div class="org">Team Developer | Special Topics in Information Management (Advised by Prof. Chuan Kai Yang)</div>
             <ul>
-                <li>Developed a real-time billiards guidance system using BFS-based reflection algorithms for AR trajectory projection.</li>
+                <li>Built a real-time trajectory projection system on HoloLens 2 using BFS-based reflection algorithms to simulate and visualize cue ball paths in MR.</li>
             </ul>
-            <div class="tech-stack">Stack: Algorithms</div>
+            <div class="tech-stack">Papers: <a href="thesis/thesis-abstract-billiards-english.pdf" target="_blank">English Abstract ↗</a> · <a href="thesis/thesis-full-special-topic-chinese.pdf" target="_blank">Full Paper ↗</a></div>
         </div>
     </section>
 
@@ -319,32 +321,38 @@
     </section>
 
     <section id="skills">
-        <h2>Technical Skills & Language Proficiency</h2>
+        <h2>Technical Skills</h2>
         <div class="skills-grid">
-            <div class="category">Domains</div>
-            <div>Wireless (Wi-Fi/BLE), FreeRTOS, Deep Packet Inspection</div>
+            <div class="category">Core Domains</div>
+            <div>Embedded Systems, Wireless Protocols (Wi-Fi/BLE), RTOS (FreeRTOS)</div>
         </div>
         <div class="skills-grid">
-            <div class="category">Programming Languages</div>
-            <div>C/C++, Python</div>
+            <div class="category">Programming</div>
+            <div>C, C++, Python, Shell Scripting</div>
         </div>
         <div class="skills-grid">
             <div class="category">Tools</div>
-            <div>Linux, Wireshark, Git, JTAG/GDB</div>
+            <div>Wireshark, Git, JTAG/GDB</div>
         </div>
         <div class="skills-grid">
-            <div class="category">English Proficiency</div>
-            <div>IETLS 6.5, TOEIC 800</div>
+            <div class="category">Language</div>
+            <div>English (IELTS 6.5, TOEIC 800), Mandarin (Native)</div>
         </div>
     </section>
 
     <section id="education">
         <h2>Education</h2>
-        <div class="item-header">
-            <span class="title">National Taiwan University of Science and Technology</span>
-            <span class="date">2019 – 2023</span>
+        <div class="item">
+            <div class="item-header">
+                <span class="title">National Taiwan University of Science and Technology</span>
+                <span class="date">2019 – 2023</span>
+            </div>
+            <div class="org">B.B.A. in Information Management | GPA: 4.01/4.30</div>
+            <ul>
+                <li>Academic Excellence Award (Ranked Top 2 of class for three consecutive semesters)</li>
+                <li>Selected Coursework: Computer Architecture (A+), Data Structures (A+), Operating Systems (A), Algorithms (A)</li>
+            </ul>
         </div>
-        <div class="meta">B.B.A. in Information Management | GPA 4.01/4.30 | Academic Excellence Award (Spring 2021, Fall 2021, Spring 2022)</div>
     </section>
 
     <footer>
