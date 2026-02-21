@@ -1,364 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chung-Yen (Matt) Chiang | Software Development Engineer</title>
-    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #111111;
-            --secondary-color: #666666;
-            --accent-color: #0070f3;
-            --border-color: #eeeeee;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chung-Yen (Matt) Chiang | Software Development Engineer</title>
+  <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+  <style>
+    :root {
+      --bg-color: #faf7f0;        /* off-white / beige */
+      --text-color: #151515;
+      --secondary-color: #6a6a6a;
+      --accent-color: #0b5fff;
+      --border-color: rgba(17,17,17,0.10);
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0; padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
+      --surface: #fffdf8;         /* cards */
+      --surface-2: #f6f1e7;       /* subtle alt surface */
+      --shadow: 0 10px 28px rgba(0,0,0,0.04);
 
-        .container { max-width: 750px; margin: 0 auto; padding: 5rem 1.5rem; }
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+    }
 
-        /* --- Header with Profile Picture --- */
-        header { 
-            display: flex; 
-            align-items: center; 
-            gap: 2.5rem; 
-            margin-bottom: 4rem; 
-        }
-        
-        .profile-pic {
-            width: 130px;
-            height: 130px;
-            border-radius: 12px;
-            object-fit: cover;
-            background-color: #f9f9f9;
-            border: 1px solid var(--border-color);
-        }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--sans);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.65;
+      margin: 0; padding: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-        .header-text { flex: 1; }
-        h1 { font-size: 2.2rem; font-weight: 700; margin: 0; letter-spacing: -0.03em; }
-        .meta { color: var(--secondary-color); font-size: 1rem; margin-top: 0.5rem; font-weight: 400; }
-        
-        .links { margin-top: 1.2rem; }
-        .links a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-right: 1.2rem;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border-color);
-            transition: 0.2s;
-        }
-        .links a:hover { border-color: var(--text-color); }
+    .container { max-width: 820px; margin: 0 auto; padding: 5rem 1.5rem; }
 
-        /* --- Sections --- */
-        section { margin-bottom: 4rem; }
-        h2 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--secondary-color);
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
+    /* --- Header --- */
+    header {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 2.25rem;
+      align-items: start;
+      margin-bottom: 2.6rem;
+      padding-bottom: 2.0rem;
+      border-bottom: 1px solid var(--border-color);
+    }
 
-        .item { margin-bottom: 2.5rem; }
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.25rem;
-        }
-        .title { font-weight: 600; font-size: 1.1rem; }
-        .date { font-size: 0.85rem; color: var(--secondary-color); font-family: monospace; }
-        .org { color: var(--accent-color); font-size: 0.95rem; font-weight: 500; margin-bottom: 0.5rem; }
-        
-        ul { padding-left: 1.2rem; margin: 0.5rem 0; list-style-type: square; }
-        li { font-size: 0.9rem; margin-bottom: 0.5rem; color: #333; }
-        .tech-stack { font-size: 0.8rem; color: var(--secondary-color); margin-top: 0.6rem; font-family: monospace; }
-        .tech-stack a { color: var(--secondary-color); text-decoration: none; border-bottom: 1px solid var(--border-color); transition: 0.2s; }
-        .tech-stack a:hover { color: var(--text-color); border-color: var(--text-color); }
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 14px;
+      object-fit: cover;
+      background-color: var(--surface-2);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+    }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 1rem;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-        }
-        .category { font-weight: 600; color: var(--secondary-color); }
-        
-        .item-header .title a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.2s;
-        }
+    .header-text { min-width: 0; }
 
-        .item-header .title a:hover {
-            color: var(--accent-color);
-        }
+    h1 {
+      font-size: 2.15rem;
+      font-weight: 720;
+      margin: 0;
+      letter-spacing: -0.03em;
+    }
 
-        .external-link-icon {
-            font-size: 0.8rem;
-            margin-left: 4px;
-            vertical-align: middle;
-            opacity: 0.5;
-        }
+    .meta {
+      color: var(--secondary-color);
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      font-weight: 430;
+    }
 
-        footer {
-            margin-top: 6rem;
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-            text-align: center;
-        }
+    .submeta {
+      margin-top: 1.0rem;
+      color: var(--secondary-color);
+      font-size: 0.95rem;
+      max-width: 72ch;
+    }
+    .submeta p { margin: 0 0 0.65rem; }
+    .submeta .label {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--secondary-color);
+      border: 1px solid var(--border-color);
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      margin-right: 0.45rem;
+      background: transparent;
+      display: inline-block;
+      transform: translateY(-1px);
+    }
 
-        @media (max-width: 600px) {
-            header { flex-direction: column; text-align: center; gap: 1.5rem; }
-            .item-header { flex-direction: column; }
-            .date { margin-top: 0.2rem; }
-            .skills-grid { grid-template-columns: 1fr; gap: 0.2rem; }
-        }
-    </style>
+    .links { margin-top: 1.0rem; display: flex; flex-wrap: wrap; gap: 0.75rem 1.1rem; }
+    .links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.92rem;
+      border-bottom: 1px solid var(--border-color);
+      transition: 0.18s ease;
+      padding-bottom: 0.08rem;
+    }
+    .links a:hover { border-color: var(--text-color); color: var(--accent-color); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--mono);
+      font-size: 0.83rem;
+      color: var(--secondary-color);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 0.32rem 0.60rem;
+      background: transparent;
+      text-decoration: none;
+      transition: 0.18s ease;
+    }
+    .pill:hover { color: var(--text-color); border-color: rgba(17,17,17,0.18); }
+
+    /* --- Sections --- */
+    section { margin-top: 2.6rem; }
+    h2 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--secondary-color);
+      margin: 0 0 1.2rem;
+    }
+
+    /* --- Items --- */
+    .item {
+      padding: 1.10rem 1.15rem 0.95rem;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      background: var(--surface);
+      margin-bottom: 1rem;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .title {
+      font-weight: 650;
+      font-size: 1.08rem;
+      letter-spacing: -0.01em;
+      min-width: 0;
+    }
+
+    .date {
+      font-size: 0.85rem;
+      color: var(--secondary-color);
+      font-family: var(--mono);
+      white-space: nowrap;
+    }
+
+    .org {
+      color: var(--accent-color);
+      font-size: 0.95rem;
+      font-weight: 560;
+      margin-bottom: 0.55rem;
+    }
+ 
+    .org a.org-link{
+        color: inherit;                 /* 跟 org 同色 */
+        text-decoration: none;
+        border-bottom: 1px solid var(--border-color);
+        margin-left: 0.5rem;
+        font-weight: 500;
+    }
+    
+    .org a.org-link:hover{
+        color: var(--accent-color);
+        border-color: currentColor;
+    }
+
+    ul { padding-left: 1.1rem; margin: 0.55rem 0 0; list-style-type: square; }
+    li {
+      font-size: 0.92rem;
+      margin-bottom: 0.55rem;
+      color: rgba(21,21,21,0.88);
+    }
+
+    /* Fix #4: avoid bold black blocks; use gentle emphasis */
+    li b {
+      color: rgba(21,21,21,0.82);
+      font-weight: 650;
+    }
+
+    /* Fix #3: Meta blocks in Title Case + slightly larger */
+    .tech-stack {
+      font-size: 0.84rem;
+      color: var(--secondary-color);
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.7rem;
+    }
+
+    a.clean-link {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.05rem;
+      transition: 0.18s ease;
+    }
+    a.clean-link:hover { border-color: var(--text-color); color: var(--accent-color); }
+
+    /* --- Skills grid --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 0.9rem;
+      font-size: 0.95rem;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.15rem;
+      background: var(--surface);
+    }
+
+    .category {
+      font-weight: 650;
+      color: var(--secondary-color);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* --- Writing (Featured + Collapsible) --- */
+    details {
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 0.95rem 1.15rem;
+      background: var(--surface);
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      color: var(--secondary-color);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+    summary::-webkit-details-marker { display: none; }
+    details[open] summary { margin-bottom: 0.9rem; }
+
+    footer {
+      margin-top: 4.2rem;
+      font-size: 0.82rem;
+      color: var(--secondary-color);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      header { grid-template-columns: 1fr; text-align: left; }
+      .profile-pic { width: 110px; height: 110px; }
+      .item-header { flex-direction: column; align-items: flex-start; }
+      .date { margin-top: 0.2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body>
 
-<div class="container">
+<body>
+  <div class="container">
     <header>
-        <img src="profile.jpg" alt="Matt Chiang" class="profile-pic">
-        <div class="header-text">
-            <h1>Chung-Yen (Matt) Chiang</h1>
-            <p class="meta">Software Development Engineer @ Amazon | Taipei, Taiwan</p>
-            <div class="links">
-                <a href="mailto:cymattchiang@gmail.com">Email</a>
-                <a href="https://github.com/cymattchiang" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/cymattchiang/" target="_blank">LinkedIn</a>
-                <a href="resume-cv.pdf" target="_blank">Resume & CV</a>
-                <a href="https://medium.com/@cymattchiang" target="_blank">Medium</a>
-            </div>
+      <img src="profile.jpg" alt="Matt Chiang" class="profile-pic" />
+
+      <div class="header-text">
+        <h1>Chung-Yen (Matt) Chiang</h1>
+        <p class="meta">Software Development Engineer @ Amazon · Wireless & Systems</p>
+
+        <div class="submeta">
+          <p>
+            I build reliability-focused Wi-Fi/BLE systems for global IoT devices. <br>
+            I care about measurable impact: performance, latency, stability, interoperability, and power.
+          </p>
+          <p>
+            <span class="label">Research Interest</span>
+            Wireless & Network Performance, System-Level Measurement.
+          </p>
         </div>
+
+        <div class="links">
+          <a href="mailto:cymattchiang@gmail.com">Email</a>
+          <a href="https://github.com/cymattchiang" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/cymattchiang/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://medium.com/@cymattchiang" target="_blank" rel="noopener">Medium</a>
+          <a href="resume-cv.pdf" target="_blank" rel="noopener">Resume & CV</a>
+        </div>
+      </div>
     </header>
 
+    <!-- Fix #7: Education moved up -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="title">National Taiwan University of Science and Technology</span>
+          <span class="date">2019 – 2023</span>
+        </div>
+        <div class="meta" style="margin:0.4rem 0 0;">
+          B.B.A. in Information Management · GPA 4.01/4.30 <br> Academic Excellence Award (Spring 2021, Fall 2021, Spring 2022)
+        </div>
+      </div>
+    </section>
+
+    <!-- Fix #5: Selected Work removed -->
+
     <section id="experience">
-        <h2>Professional Experience</h2>
+      <h2>Professional Experience</h2>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="title">Software Development Engineer I (L4)</span>
-                <span class="date">Aug 2023 – Present</span>
-            </div>
-            <div class="org">Amazon - Connectivity Team</div>
-            <ul>
-                <li>Led wireless bring-up (Wi-Fi/BLE) for embedded systems on FreeRTOS, consolidating chipset BSPs and SDKs across multiple next-gen ASIC and wireless vendors for NPI projects.</li>
-                <li>Developed a modular BLE setup subsystem from scratch, incorporating an E2E encryption channel and dynamic country code configuration for global SKU deployment.</li>
-                <li>Optimized DHCP reconnection logic, achieving a 76% reduction in latency and 69% performance gain in unstable network environments.</li>
-                <li>Fine-tuned WMM QoS (EDCA) parameters to prioritize latency-sensitive traffic for high-fidelity streaming services.</li>
-                <li>Implemented advanced Wi-Fi power-saving mechanisms and wake-up patterns, significantly extending battery-operated IoT device longevity.</li>
-                <li>Collaborated with cross-functional teams to align firmware implementations with global wireless regulatory and compliance standards.</li>
-            </ul>
+      <div class="item">
+        <div class="item-header">
+          <span class="title">Software Development Engineer I</span>
+          <span class="date">Aug 2023 – Present</span>
         </div>
+        <div class="org">Amazon Connectivity Team</div>
+        <ul>
+          <li><b>Wireless Bring-up</b> for embedded systems (Wi-Fi/BLE on FreeRTOS), consolidating chipset BSPs/SDKs across next-gen ASIC and wireless vendors for NPI projects.</li>
+          <li><b>Secure Provisioning</b>: implemented a modular BLE setup subsystem with end-to-end encryption and dynamic country-code configuration for global SKU deployment.</li>
+          <li><b>Measurement-Driven Optimization</b>: characterized unstable network reconnection; designed DHCP statistics and enhancements achieving 76% faster reconnection and 69% improvement in challenging environments.</li>
+          <li><b>Latency-Sensitive Performance</b>: tuned WMM QoS (EDCA) parameters to improve streaming stability under contention.</li>
+          <li><b>Power Efficiency</b>: developed Wi-Fi power-saving features and wake-up pattern management to extend battery life.</li>
+        </ul>
+        <div class="tech-stack">Keywords: Reliability · Observability · Embedded Networking · Wi-Fi/BLE · FreeRTOS</div>
+      </div>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="title">Software Development Engineer Intern</span>
-                <span class="date">Sep 2022 – Jul 2023</span>
-            </div>
-            <div class="org">Amazon - Connectivity Team</div>
-            <ul>
-                <li>Refined priority-based connection management logic to improve connectivity consistency across diverse IoT ecosystems.</li>
-                <li>Debugged and resolved 20+ critical firmware issues during the validation phase of major product launches.</li>
-                <li>Developed automated diagnostic tools for interoperability testing with 60+ commercial router models.</li>
-            </ul>
+      <div class="item">
+        <div class="item-header">
+          <span class="title">Software Development Engineer Intern</span>
+          <span class="date">Sep 2022 – Jul 2023</span>
         </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title">Research Intern</span>
-                <span class="date">Jul 2022 – Aug 2022</span>
-            </div>
-            <div class="org">Academia Sinica – Institute of Information Science (Advised by Prof. Meng Chang Chen)</div>
-            <ul>
-                <li>Reverse-engineered obfuscated malware using IDA Pro to identify sandbox evasion triggers and anti-analysis behaviors.</li>
-                <li>Researched hardware-level evasion techniques (CPU/Registry checks) to improve the detection accuracy of analysis environments.</li>
-                <li>Implemented a modular detection framework in C and Python to enhance the flexibility of the Cuckoo Sandbox monitor.</li>
-            </ul>
-            <div class="tech-stack">Paper: <a href="thesis/thesis-abstract-academia-sinica-english.pdf" target="_blank">English Abstract ↗</a></div>
-        </div>
+        <div class="org">Amazon Connectivity Team</div>
+        <ul>
+          <li>Redesigned priority-oriented wireless connection logic to improve consistency across IoT devices.</li>
+          <li>Resolved 20+ critical connectivity issues during product development phases.</li>
+          <li>Built diagnostic tools to accelerate troubleshooting and enhanced interoperability testing across 60+ router models.</li>
+        </ul>
+        <div class="tech-stack">Keywords: Interoperability · Tooling · Debugging · Wi-Fi</div>
+      </div>
     </section>
 
     <section id="research">
-        <h2>Research & Projects</h2>
+      <h2>Research & Publications</h2>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="title">
-                    <a href="https://github.com/cymattchiang/undergraduate-research-thesis" target="_blank">
-                        Implementation Analysis of Secure Channels for Smart Manufacturing Systems in Cloud Environments <span class="external-link-icon">↗</span>
-                    </a>
-                </span>
-                <span class="date">Jul 2021 – Feb 2022</span>
-            </div>
-            <div class="org">1st Author - Cryptology and Information Security Conference 2022 | 1st Author - MOST Scholarship (Advised by Prof. Nai Wei Lo)</div>
-            <ul>
-                <li>Awarded the Undergraduate Research Scholarship by the Ministry of Science and Technology for excellence in secure systems research.</li>
-                <li>Researched and implemented Site-to-Site IPsec secure channels for industrial communication between local gateways and AWS VPC.</li>
-                <li>Conducted deep packet inspection (DPI) with Wireshark and benchmarked performance using iPerf3 and Netperf.</li>
-                <li>Investigated ARMv8 Cryptographic Extensions to accelerate encryption/decryption on resource-constrained devices.</li>
-            </ul>
-            <div class="tech-stack">Stack: IPsec, AWS VPC, ARMv8 Cryptography, Wireshark, iPerf3</div>
-            <div class="tech-stack">Papers: <a href="thesis/thesis-abstract-most-cisc-english.pdf" target="_blank">English Abstract ↗</a> · <a href="thesis/thesis-full-cisc-chinese.pdf" target="_blank">CISC Full Paper ↗</a> · <a href="thesis/thesis-full-most-chinese.pdf" target="_blank">MOST Full Paper ↗</a></div>
+      <div class="item">
+        <div class="item-header">
+          <span class="title">
+            <a class="clean-link" href="https://github.com/cymattchiang/undergraduate-research-thesis" target="_blank" rel="noopener">
+              Implementation of Secure Channel for Intelligent Manufacturing ↗
+            </a>
+          </span>
+          <span class="date">Jul 2021 – Feb 2022</span>
         </div>
+        <div class="org">Scholarship from Ministry of Science and Technology (MOST) <a class="org-link" href="https://www.cs.ntust.edu.tw/p/405-1102-106268,c10961.php?Lang=en" target="_blank" rel="noopener">
+            Advisor: Prof. Nai-Wei Lo ↗
+          </a></div>
+        <div class="org">1st Author · Cryptology and Information Security Conference (CISC)</div>
+        <ul>
+          <li>Published research on securing communication between industrial devices and AWS Cloud using Site-to-Site IPsec channels.</li>
+          <li>Verified protocol behavior via deep packet analysis (Wireshark) and conducted performance analysis using iPerf3 and Netperf.</li>
+          <li>Investigated ARMv8 hardware acceleration for cryptographic operations on embedded devices.</li>
+        </ul>
+        <div class="tech-stack">Stack: IPsec · AWS VPC · ARMv8 Cryptography · Wireshark · iPerf3</div>
+      </div>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="title">
-                    <a href="https://github.com/cymattchiang/special-topics-pool" target="_blank">
-                        Billiards Guidance with HoloLens 2 <span class="external-link-icon">↗</span>
-                    </a>
-                </span>
-                <span class="date">Jul 2021 – May 2022</span>
-            </div>
-            <div class="org">Team Developer | Special Topics in Information Management (Advised by Prof. Chuan Kai Yang)</div>
-            <ul>
-                <li>Built a real-time trajectory projection system on HoloLens 2 using BFS-based reflection algorithms to simulate and visualize cue ball paths in MR.</li>
-            </ul>
-            <div class="tech-stack">Papers: <a href="thesis/thesis-abstract-billiards-english.pdf" target="_blank">English Abstract ↗</a> · <a href="thesis/thesis-full-special-topic-chinese.pdf" target="_blank">Full Paper ↗</a></div>
+      <div class="item">
+        <div class="item-header">
+          <span class="title">
+            <a class="clean-link" href="https://github.com/cymattchiang/iis-sinica-report" target="_blank" rel="noopener">
+              Anti-Evasion Techniques in Cuckoo Monitor ↗
+            </a>
+          </span>
+          <span class="date">Jul 2022 – Aug 2022</span>
         </div>
-    </section>
+        <div class="org">Research Intern · Academia Sinica <a class="org-link" href="https://homepage.iis.sinica.edu.tw/pages/mcc/index_en.html" target="_blank" rel="noopener">
+            Advisor: Prof. Meng Chang Chen ↗ </a></div>
+        <ul>
+          <li>Reverse-engineered obfuscated malware using IDA Pro to uncover hidden behaviors and sandbox evasion triggers.</li>
+          <li>Researched sandbox/VM evasion techniques involving registry and hardware checks to improve detection accuracy.</li>
+          <li>Developed a modular framework for adding new evasion detection methods to enhance adaptability.</li>
+        </ul>
+        <div class="tech-stack">Stack: C · Python · IDA Pro · Cuckoo Sandbox · Malware Analysis</div>
+      </div>
 
-    <section id="writing">
-        <h2>Writing & Insights</h2>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/2026-%E7%B7%B4%E7%BF%92%E6%B8%85%E5%96%AE-%E5%85%81%E8%A8%B1%E8%87%AA%E5%B7%B1%E9%AC%86%E5%BC%9B-%E5%B0%B1%E6%98%AF%E5%B0%8D%E7%94%9F%E6%B4%BB%E6%9C%80%E5%A4%A7%E7%9A%84%E6%BA%AB%E6%9F%94-3dcd7584b50c" target="_blank">2026 練習清單：允許自己鬆弛，就是對生活最大的溫柔 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Dec 2025</span>
-            </div>
+      <div class="item">
+        <div class="item-header">
+          <span class="title">
+            <a class="clean-link" href="https://github.com/cymattchiang/special-topics-pool" target="_blank" rel="noopener">
+              Billiards Guidance via HoloLens 2 ↗
+            </a>
+          </span>
+          <span class="date">Jul 2021 – May 2022</span>
         </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/welcome-to-amazon-af9951137217" target="_blank">Welcome to Amazon<span class="external-link-icon">↗</span></a></span>
-                <span class="date">May 2025</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/amazon-connectivity-%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-b3fb5bdfea9e" target="_blank">Amazon Connectivity 軟體工程師工作心得分享 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">May 2024</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/online-mcs-%E8%B3%87%E8%A8%8A%E5%88%86%E4%BA%AB%E5%8F%8A%E7%94%B3%E8%AB%8B%E5%BF%83%E5%BE%97-416be10959cc" target="_blank">Online MCS 資訊分享及申請心得 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Mar 2024</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/%E5%8F%B0%E7%81%A3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E8%B3%87%E8%A8%8A%E7%AE%A1%E7%90%86%E7%B3%BB108%E7%B4%9A%E5%9B%9B%E5%B9%B4%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB-60abe9a32238" target="_blank">台灣科技大學資訊管理系 108 級四年經驗分享 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Feb 2024</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/amazon%E6%95%B8%E4%BD%8D%E6%B8%B8%E7%89%A7%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-e5effebcb6e8" target="_blank">Amazon 數位遊牧心得分享 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Feb 2024</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/%E9%9B%85%E6%80%9Doverall-6-5%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-df8d644f76e5" target="_blank">雅思 Overall 6.5 心得分享 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Mar 2023</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/2022-amazon-ring-%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-cc9fbe8ba7b4" target="_blank">2022 Amazon Ring 實習心得分享 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Aug 2023</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/112%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%9D%9E%E6%9C%AC%E7%A7%91%E8%B7%A8%E6%8E%A8%E5%8F%B0%E6%B8%85%E4%BA%A4%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E6%8E%A8%E7%94%84%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-3e30d62107e9" target="_blank">112 學年度非本科跨推台清交資訊科系推甄心得 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Nov 2022</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/111%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E8%B3%87%E8%A8%8A%E7%A7%91%E5%AD%B8%E7%A0%94%E7%A9%B6%E6%89%80%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-4364d0b49c6" target="_blank">111 年度中央研究院資訊科學研究所暑期實習心得 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Nov 2022</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/110%E5%B9%B4%E5%BA%A6%E7%A7%91%E6%8A%80%E9%83%A8%E5%A4%A7%E5%B0%88%E5%AD%B8%E7%94%9F%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-d7f0bf3b4a9b" target="_blank">110 年度科技部大專學生研究計畫心得分享 <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Aug 2022</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="title"><a href="https://medium.com/@cymattchiang/2022-%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E5%AF%A6%E7%BF%92%E9%9D%A2%E8%A9%A6%E5%BF%83%E5%BE%97-%E5%A4%96%E5%95%86-%E6%96%B0%E5%89%B5%E7%AD%89-9ec6c29f29e1" target="_blank">2022 資訊科系實習面試心得分享 (Amazon / Garmin / 新創等) <span class="external-link-icon">↗</span></a></span>
-                <span class="date">Apr 2022</span>
-            </div>
-        </div>
+        <div class="org">Team Developer · Special Topics in Information Management <a class="org-link" href="https://www.cs.ntust.edu.tw/p/405-1102-106265,c10961.php?Lang=en" target="_blank" rel="noopener">
+            Advisor: Prof. Chuan-Kai Yang ↗</a></div>
+        <ul>
+          <li>Developed a real-time billiards guidance system using BFS-based reflection algorithms for AR trajectory projection.</li>
+        </ul>
+        <div class="tech-stack">Stack: Algorithms</div>
+      </div>
     </section>
 
     <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="category">Core Domains</div>
-            <div>Embedded Systems, Wireless Protocols (Wi-Fi/BLE), RTOS (FreeRTOS)</div>
-        </div>
-        <div class="skills-grid">
-            <div class="category">Programming</div>
-            <div>C, C++, Python, Shell Scripting</div>
-        </div>
-        <div class="skills-grid">
-            <div class="category">Tools</div>
-            <div>Wireshark, Git, JTAG/GDB</div>
-        </div>
-        <div class="skills-grid">
-            <div class="category">Language</div>
-            <div>English (IELTS 6.5, TOEIC 800), Mandarin (Native)</div>
-        </div>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="category">Domains</div>
+        <div>Wireless (Wi-Fi/BLE), Embedded Systems (FreeRTOS), Deep Packet Inspection</div>
+
+        <div class="category">Languages</div>
+        <div>C/C++, Python</div>
+
+        <div class="category">Tools</div>
+        <div>Linux, Wireshark, Git, JTAG/GDB</div>
+
+        <div class="category">English</div>
+        <div>IELTS 6.5, TOEIC 800</div>
+      </div>
     </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="item">
-            <div class="item-header">
-                <span class="title">National Taiwan University of Science and Technology</span>
-                <span class="date">2019 – 2023</span>
-            </div>
-            <div class="org">B.B.A. in Information Management | GPA: 4.01/4.30</div>
-            <ul>
-                <li>Academic Excellence Award (Ranked Top 2 of class for three consecutive semesters)</li>
-                <li>Selected Coursework: Computer Architecture (A+), Data Structures (A+), Operating Systems (A), Algorithms (A)</li>
-            </ul>
+    <section id="writing">
+      <h2>Writing & Insights</h2>
+
+      <!-- Fix #6: newest first -->
+      <div class="item">
+        <div class="item-header">
+          <span class="title">
+            <a class="clean-link" href="https://medium.com/@cymattchiang/2026-%E7%B7%B4%E7%BF%92%E6%B8%85%E5%96%AE-%E5%85%81%E8%A8%B1%E8%87%AA%E5%B7%B1%E9%AC%86%E5%BC%9B-%E5%B0%B1%E6%98%AF%E5%B0%8D%E7%94%9F%E6%B4%BB%E6%9C%80%E5%A4%A7%E7%9A%84%E6%BA%AB%E6%9F%94-3dcd7584b50c" target="_blank" rel="noopener">
+              2026 練習清單：允許自己鬆弛，就是對生活最大的溫柔 ↗
+            </a>
+          </span>
+          <span class="date">Dec 2025</span>
         </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="title">
+            <a class="clean-link" href="https://medium.com/@cymattchiang/welcome-to-amazon-af9951137217" target="_blank" rel="noopener">
+              Welcome to Amazon ↗
+            </a>
+          </span>
+          <span class="date">May 2025</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="title">
+            <a class="clean-link" href="https://medium.com/@cymattchiang/amazon-connectivity-%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-b3fb5bdfea9e" target="_blank" rel="noopener">
+              Amazon Connectivity 軟體工程師工作心得分享 ↗
+            </a>
+          </span>
+          <span class="date">May 2024</span>
+        </div>
+      </div>
+
+      <details>
+        <summary>Show all writing</summary>
+
+        <div class="item" style="margin-top: 0.9rem;">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/online-mcs-%E8%B3%87%E8%A8%8A%E5%88%86%E4%BA%AB%E5%8F%8A%E7%94%B3%E8%AB%8B%E5%BF%83%E5%BE%97-416be10959cc" target="_blank" rel="noopener">
+                Online MCS 資訊分享及申請心得 ↗
+              </a>
+            </span>
+            <span class="date">Mar 2024</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/%E5%8F%B0%E7%81%A3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E8%B3%87%E8%A8%8A%E7%AE%A1%E7%90%86%E7%B3%BB108%E7%B4%9A%E5%9B%9B%E5%B9%B4%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB-60abe9a32238" target="_blank" rel="noopener">
+                台灣科技大學資訊管理系 108 級四年經驗分享 ↗
+              </a>
+            </span>
+            <span class="date">Feb 2024</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/amazon%E6%95%B8%E4%BD%8D%E6%B8%B8%E7%89%A7%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-e5effebcb6e8" target="_blank" rel="noopener">
+                Amazon 數位遊牧心得分享 ↗
+              </a>
+            </span>
+            <span class="date">Feb 2024</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/%E9%9B%85%E6%80%9Doverall-6-5%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-df8d644f76e5" target="_blank" rel="noopener">
+                雅思 Overall 6.5 心得分享 ↗
+              </a>
+            </span>
+            <span class="date">Mar 2023</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/2022-amazon-ring-%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-cc9fbe8ba7b4" target="_blank" rel="noopener">
+                2022 Amazon Ring 實習心得分享 ↗
+              </a>
+            </span>
+            <span class="date">Aug 2023</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/112%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%9D%9E%E6%9C%AC%E7%A7%91%E8%B7%A8%E6%8E%A8%E5%8F%B0%E6%B8%85%E4%BA%A4%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E6%8E%A8%E7%94%84%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-3e30d62107e9" target="_blank" rel="noopener">
+                112 學年度非本科跨推台清交資訊科系推甄心得分享 ↗
+              </a>
+            </span>
+            <span class="date">Nov 2022</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/111%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E8%B3%87%E8%A8%8A%E7%A7%91%E5%AD%B8%E7%A0%94%E7%A9%B6%E6%89%80%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-4364d0b49c6" target="_blank" rel="noopener">
+                111 年度中央研究院資訊科學研究所暑期實習心得分享 ↗
+              </a>
+            </span>
+            <span class="date">Nov 2022</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/110%E5%B9%B4%E5%BA%A6%E7%A7%91%E6%8A%80%E9%83%A8%E5%A4%A7%E5%B0%88%E5%AD%B8%E7%94%9F%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-d7f0bf3b4a9b" target="_blank" rel="noopener">
+                110 年度科技部大專學生研究計畫心得分享 ↗
+              </a>
+            </span>
+            <span class="date">Aug 2022</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <span class="title">
+              <a class="clean-link" href="https://medium.com/@cymattchiang/2022-%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E5%AF%A6%E7%BF%92%E9%9D%A2%E8%A9%A6%E5%BF%83%E5%BE%97-%E5%A4%96%E5%95%86-%E6%96%B0%E5%89%B5%E7%AD%89-9ec6c29f29e1" target="_blank" rel="noopener">
+                2022 資訊科系實習面試心得分享 (Amazon / Garmin / 新創等) ↗
+              </a>
+            </span>
+            <span class="date">Apr 2022</span>
+          </div>
+        </div>
+      </details>
     </section>
 
     <footer>
-        &copy; 2026 Matt Chiang. Built with a focus on clarity and precision.
+      &copy; 2026 Matt Chiang. Built with a focus on clarity and precision.
     </footer>
-</div>
-
+  </div>
 </body>
 </html>
