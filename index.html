@@ -325,9 +325,13 @@
         </div>
         <div class="org">Amazon Connectivity Team</div>
         <ul>
-          <li><b>Wireless Bring-up</b> for embedded systems (Wi-Fi/BLE on FreeRTOS), consolidating chipset BSPs/SDKs across next-gen ASIC and wireless vendors for NPI projects.</li>
+          <li><b>Cross-Layer Performance</b>: lifted end-to-end Wi-Fi throughput 2.36× (10.59 → 25 Mbps) on FreeRTOS via profiling from PHY through SDIO, kernel, and application; resolved IMI memory bottleneck (SDIO), TCP shared-lock and mutex contention (kernel), and application memory contention, plus CPU overclock tuning.</li>
+          <li><b>Dynamic NVRAM/CLM Loading</b>: architected runtime loading from flash, enabling a single firmware image to serve multiple SKUs and regulatory regions without per-region rebuild.</li>
+          <li><b>Wireless Bring-up</b>: led Wi-Fi/BLE bring-up on next-gen ASIC platforms; integrated wireless chipset BSPs/SDKs into production FreeRTOS firmware for NPI programs.</li>
+          <li><b>RF Validation Firmware</b>: owned delivery of purpose-built images to unblock RF, antenna, and platform validation engineers across NPI cycles.</li>
+          <li><b>Cross-Layer Debugging</b>: drove root-cause analysis and resolution of 10+ firmware tickets across Wi-Fi, BLE, and platform stacks, from internal validation reports through field escalations.</li>
         </ul>
-        <div class="tech-stack">Keywords: System Design · Embedded Networking · Wi-Fi/BLE · FreeRTOS</div>
+        <div class="tech-stack">Keywords: Cross-Layer Profiling · Embedded Networking · Wi-Fi/BLE · FreeRTOS · BSP/SDK · NVRAM/CLM · NPI</div>
       </div>
 
       <div class="item">
@@ -337,12 +341,13 @@
         </div>
         <div class="org">Amazon Connectivity Team</div>
         <ul>
-          <li><b>Secure Provisioning</b>: implemented a modular BLE setup subsystem with end-to-end encryption and dynamic country-code configuration for global SKU deployment.</li>
-          <li><b>Measurement-Driven Optimization</b>: characterized unstable network reconnection; designed DHCP statistics and enhancements achieving 76% faster reconnection and 69% improvement in challenging environments.</li>
-          <li><b>Latency-Sensitive Performance</b>: tuned WMM QoS (EDCA) parameters to improve streaming stability under contention.</li>
-          <li><b>Power Efficiency</b>: developed Wi-Fi power-saving features and wake-up pattern management to extend battery life.</li>
+          <li><b>Secure Provisioning</b>: built a modular BLE setup subsystem from scratch with end-to-end encryption and dynamic country-code configuration, enabling global SKU deployment from a single firmware base.</li>
+          <li><b>Measurement-Driven Optimization</b>: characterized unstable network reconnection and redesigned DHCP logic, reducing reconnection latency by 76% under challenging environments.</li>
+          <li><b>Latency-Sensitive Performance</b>: tuned WMM QoS (EDCA) parameters to prioritize latency-sensitive traffic, improving p99 latency for streaming services by 24%.</li>
+          <li><b>Power Efficiency</b>: developed Wi-Fi power-saving and wake-up pattern mechanisms, extending battery-operated IoT device standby from 40 to 65 days.</li>
+          <li><b>Sustained Ownership</b>: resolved 50+ firmware tickets across Wi-Fi, BLE, and connectivity stack from internal validation and field reports.</li>
         </ul>
-        <div class="tech-stack">Keywords: Embedded Networking · Wi-Fi/BLE · FreeRTOS</div>
+        <div class="tech-stack">Keywords: Embedded Networking · Wi-Fi/BLE · FreeRTOS · WMM/EDCA · DHCP · Power Management · BLE Security</div>
       </div>
 
       <div class="item">
@@ -352,9 +357,9 @@
         </div>
         <div class="org">Amazon Connectivity Team</div>
         <ul>
-          <li>Redesigned priority-oriented wireless connection logic to improve consistency across IoT devices.</li>
-          <li>Resolved 20+ critical connectivity issues during product development phases.</li>
-          <li>Built diagnostic tools to accelerate troubleshooting and enhanced interoperability testing across 60+ router models.</li>
+          <li>Redesigned priority-oriented wireless connection logic to improve consistency across heterogeneous IoT ecosystems.</li>
+          <li>Debugged and resolved 20+ critical firmware issues during validation of major product launches.</li>
+          <li>Built automated diagnostic tools for interoperability testing across 60+ commercial router models.</li>
         </ul>
         <div class="tech-stack">Keywords: Interoperability · Tooling · Debugging · Wi-Fi</div>
       </div>
@@ -367,19 +372,19 @@
         <div class="item-header">
           <span class="title">
             <a class="clean-link" href="https://github.com/cymattchiang/undergraduate-research-thesis" target="_blank" rel="noopener">
-              Implementation of Secure Channel for Intelligent Manufacturing ↗
+              Secure Channels for Smart Manufacturing Systems in Cloud Environments ↗
             </a>
           </span>
           <span class="date">Jul 2021 – Feb 2022</span>
         </div>
-        <div class="org">Scholarship from Ministry of Science and Technology (MOST) <a class="org-link" href="https://www.cs.ntust.edu.tw/p/405-1102-106268,c10961.php?Lang=en" target="_blank" rel="noopener">
+        <div class="org">Recipient · MOST Undergraduate Research Scholarship <a class="org-link" href="https://www.cs.ntust.edu.tw/p/405-1102-106268,c10961.php?Lang=en" target="_blank" rel="noopener">
             Advisor: Prof. Nai-Wei Lo ↗
           </a></div>
-        <div class="org">1st Author · Cryptology and Information Security Conference (CISC)</div>
+        <div class="org">1st Author · Cryptology and Information Security Conference (CISC) 2022</div>
         <ul>
-          <li>Published research on securing communication between industrial devices and AWS Cloud using Site-to-Site IPsec channels.</li>
-          <li>Verified protocol behavior via deep packet analysis (Wireshark) and conducted performance analysis using iPerf3 and Netperf.</li>
-          <li>Investigated ARMv8 hardware acceleration for cryptographic operations on embedded devices.</li>
+          <li>Researched and implemented Site-to-Site IPsec secure channels for industrial communication between local gateways and AWS VPC.</li>
+          <li>Conducted deep packet inspection (DPI) with Wireshark and benchmarked performance using iPerf3 and Netperf.</li>
+          <li>Investigated ARMv8 Cryptographic Extensions to accelerate encryption/decryption on resource-constrained devices.</li>
         </ul>
         <div class="tech-stack">Stack: IPsec · AWS VPC · ARMv8 Cryptography · Wireshark · iPerf3</div>
       </div>
@@ -396,9 +401,9 @@
         <div class="org">Research Intern · Academia Sinica <a class="org-link" href="https://homepage.iis.sinica.edu.tw/pages/mcc/index_en.html" target="_blank" rel="noopener">
             Advisor: Prof. Meng Chang Chen ↗ </a></div>
         <ul>
-          <li>Reverse-engineered obfuscated malware using IDA Pro to uncover hidden behaviors and sandbox evasion triggers.</li>
-          <li>Researched sandbox/VM evasion techniques involving registry and hardware checks to improve detection accuracy.</li>
-          <li>Developed a modular framework for adding new evasion detection methods to enhance adaptability.</li>
+          <li>Reverse-engineered obfuscated malware using IDA Pro to identify sandbox evasion triggers and anti-analysis behaviors.</li>
+          <li>Researched hardware-level evasion techniques (CPU/registry checks) to improve detection accuracy of analysis environments.</li>
+          <li>Implemented a modular detection framework in C and Python to extend the Cuckoo Sandbox monitor.</li>
         </ul>
         <div class="tech-stack">Stack: C · Python · IDA Pro · Cuckoo Sandbox · Malware Analysis</div>
       </div>
@@ -415,26 +420,29 @@
         <div class="org">Team Developer · Special Topics in Information Management <a class="org-link" href="https://www.cs.ntust.edu.tw/p/405-1102-106265,c10961.php?Lang=en" target="_blank" rel="noopener">
             Advisor: Prof. Chuan-Kai Yang ↗</a></div>
         <ul>
-          <li>Developed a real-time billiards guidance system using BFS-based reflection algorithms for AR trajectory projection.</li>
+          <li>Built a real-time trajectory projection system on HoloLens 2 using BFS-based reflection algorithms to simulate and visualize cue ball paths in MR.</li>
         </ul>
-        <div class="tech-stack">Stack: Algorithms</div>
+        <div class="tech-stack">Stack: Algorithms · MR · HoloLens 2</div>
       </div>
     </section>
 
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills-grid">
-        <div class="category">Domains</div>
-        <div>Wireless (Wi-Fi/BLE), Embedded Systems (FreeRTOS), Deep Packet Inspection</div>
+        <div class="category">Core Domains</div>
+        <div>Embedded Systems, Wi-Fi & BLE, RTOS (FreeRTOS), BSP/SDK Integration, Cross-Layer Performance Profiling</div>
 
-        <div class="category">Languages</div>
-        <div>C/C++, Python</div>
+        <div class="category">Wireless</div>
+        <div>WMM/EDCA, A-MPDU/A-MSDU, NVRAM/CLM, RF/antenna validation, Monitor-mode sniffing</div>
+
+        <div class="category">Programming</div>
+        <div>C, C++, Python, Shell Scripting</div>
 
         <div class="category">Tools</div>
-        <div>Linux, Wireshark, Git, JTAG/GDB</div>
+        <div>Linux, GDB / JTAG, perf, ftrace, Wireshark, tcpdump, iperf3, Git</div>
 
-        <div class="category">English</div>
-        <div>IELTS 6.5, TOEIC 800</div>
+        <div class="category">Languages</div>
+        <div>English (Professional), Mandarin (Native)</div>
       </div>
     </section>
 
