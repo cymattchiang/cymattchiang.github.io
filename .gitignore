@@ -1,0 +1,6 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Local-only scratch files and backups
+/_local/

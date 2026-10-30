@@ -1,680 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chung-Yen (Matt) Chiang</title>
-  <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chung-Yen (Matt) Chiang — network systems and architecture, with an interest in efficient and reliable networked systems. M.S. student at Seoul National University, previously at Amazon.">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>Chung-Yen (Matt) Chiang · Network Systems &amp; Architecture</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
-    :root {
-      --bg-color: #faf7f0;
-      --text-color: #151515;
-      --secondary-color: #6a6a6a;
-      --accent-color: #0b5fff;
-      --muted-accent: #4a5d80;
-      --border-color: rgba(17,17,17,0.10);
-
-      --surface: #fffdf8;
-      --surface-2: #f6f1e7;
-      --shadow: 0 10px 28px rgba(0,0,0,0.04);
-
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
-      --serif: ui-serif, Charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    :root { --paper:#f8f7f2; --ink:#242a27; --muted:#626a64; --accent:#365f4d; --line:#dcded5; --wash:#efefe6; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; --serif:Charter,"Bitstream Charter",Georgia,serif; --mono:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:100px; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.65 var(--sans); -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration-color:#a4b5a7; text-underline-offset:4px; text-decoration-thickness:1px; }
+    a:hover { color:var(--accent); text-decoration-color:var(--accent); }
+    button, summary, a { -webkit-tap-highlight-color:transparent; }
+    :focus-visible { outline:2px solid var(--accent); outline-offset:5px; border-radius:2px; }
+    ::selection { background:#dce6d8; }
+    .wrap { width:min(960px,calc(100% - 64px)); margin-inline:auto; }
+    .skip { position:fixed; top:-80px; left:20px; padding:10px 18px; background:var(--ink); color:white; z-index:20; }
+    .skip:focus { top:12px; }
+    .topbar { border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:0; z-index:10; }
+    .nav-row { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .wordmark { font:600 17px var(--serif); text-decoration:none; white-space:nowrap; }
+    .wordmark span { color:var(--accent); }
+    nav { display:flex; align-items:center; gap:26px; }
+    nav a { font-size:13px; text-decoration:none; padding-block:12px; color:var(--muted); }
+    nav a:hover, nav a[aria-current="location"] { color:var(--accent); text-decoration:underline; }
+    .hero { display:grid; grid-template-columns:minmax(0,1fr) 176px; column-gap:58px; padding:64px 0 44px; }
+    .eyebrow { margin:0 0 12px; color:var(--accent); font:500 11px/1.5 var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:0; font:500 clamp(32px,4.5vw,44px)/1.15 var(--serif); letter-spacing:-.045em; }
+    .role { color:var(--muted); margin:14px 0 22px; font-size:14px; }
+    .intro { max-width:62ch; margin:0; font-size:17px; line-height:1.75; }
+    .intro strong { font-weight:600; }
+    .background { margin:14px 0 0; color:var(--muted); font-size:14px; max-width:65ch; }
+    .portrait { width:176px; height:210px; object-fit:cover; border-radius:3px; background:var(--wash); }
+    .portrait-note { margin:12px 0 0; color:var(--muted); font:11px/1.7 var(--mono); }
+    .contact-links { display:flex; flex-wrap:wrap; align-items:center; gap:10px 21px; margin-top:25px; }
+    .contact-links a { font-size:13px; padding-block:7px; text-decoration:none; }
+    .contact-links .primary { background:var(--accent); border:1px solid var(--accent); color:#fff; padding:9px 16px; border-radius:3px; }
+    .contact-links .primary:hover { background:#254c3a; }
+    .contact-links .secondary { border:1px solid #b8c1b6; padding:9px 16px; border-radius:3px; }
+    .contact-links .secondary:hover { background:var(--wash); }
+    .latest { display:flex; align-items:baseline; gap:20px; padding:16px 0; border-block:1px solid var(--line); font-size:13px; }
+    .latest time { color:var(--accent); font:11px var(--mono); white-space:nowrap; }
+    .latest p { margin:0; color:var(--muted); }
+    section { padding-top:50px; scroll-margin-top:20px; }
+    .section-head { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:23px; }
+    h2 { font:500 27px/1.25 var(--serif); letter-spacing:-.025em; margin:0; }
+    .section-note { font:11px/1.5 var(--mono); color:var(--muted); }
+    .section-intro { color:var(--muted); font-size:14px; max-width:70ch; margin:-8px 0 25px; }
+    .project { display:grid; grid-template-columns:132px minmax(0,1fr); gap:32px; border-top:1px solid var(--line); padding:26px 0; }
+    .metric { font:500 37px/1.1 var(--serif); color:var(--accent); letter-spacing:-.04em; padding-top:3px; }
+    .metric-label { display:block; font:11px/1.6 var(--sans); color:var(--muted); letter-spacing:0; margin-top:9px; max-width:125px; }
+    .project-kicker { color:var(--muted); font:10px/1.5 var(--mono); text-transform:uppercase; letter-spacing:.08em; margin:0 0 7px; }
+    h3 { font-size:17px; font-weight:600; line-height:1.45; letter-spacing:-.015em; margin:0 0 8px; }
+    .project p { margin:0; font-size:14px; color:var(--muted); }
+    .project p strong { color:var(--ink); font-weight:500; }
+    .tags { display:flex; flex-wrap:wrap; gap:7px 14px; margin-top:14px; color:var(--accent); font:10px/1.6 var(--mono); }
+    details { font-size:13px; }
+    summary { cursor:pointer; min-height:44px; display:flex; align-items:center; justify-content:space-between; gap:20px; list-style:none; font-size:12px; color:var(--accent); width:fit-content; }
+    summary::-webkit-details-marker { display:none; }
+    summary span { font:18px/1 var(--mono); transition:transform .15s; }
+    details[open]>summary span { transform:rotate(45deg); }
+    details p, details ul { font-size:13px; line-height:1.8; color:var(--muted); }
+    details ul { padding-left:18px; margin:0 0 12px; }
+    details li { margin-bottom:8px; }
+    .publication { border-left:2px solid var(--accent); padding:4px 0 4px 23px; }
+    .venue { font:11px var(--mono); letter-spacing:.05em; color:var(--accent); margin:0 0 12px; }
+    .publication h3 { font:500 21px/1.45 var(--serif); max-width:65ch; }
+    .authors { font-size:13px; color:var(--muted); margin:7px 0 14px; }
+    .authors strong { color:var(--ink); font-weight:600; }
+    .paper-summary { color:var(--muted); font-size:14px; max-width:72ch; margin:0 0 16px; }
+    .resource-links { display:flex; flex-wrap:wrap; gap:10px 23px; font-size:12px; }
+    .resource-links a { padding-block:5px; }
+    .pub-language { color:var(--muted); font-size:11px; }
+    .experience-row { display:grid; grid-template-columns:142px minmax(0,1fr); gap:22px; border-top:1px solid var(--line); padding:23px 0; }
+    .experience-date { color:var(--muted); font:11px/1.8 var(--mono); padding-top:3px; }
+    .experience-row h3 { margin-bottom:4px; font-size:15px; }
+    .experience-row p { font-size:13px; color:var(--muted); margin:0; }
+    .experience-role { color:var(--accent)!important; margin-bottom:8px!important; }
+    .experience-row .resource-links { margin-top:9px; }
+    .education-list { border-top:1px solid var(--line); }
+    .education-row { display:flex; justify-content:space-between; gap:24px; padding:18px 0; border-bottom:1px solid var(--line); }
+    .education-row h3 { font-size:14px; margin-bottom:3px; }
+    .education-row p { font-size:12px; color:var(--muted); margin:0; }
+    .education-row .experience-date { text-align:right; white-space:nowrap; }
+    .more-background { border-bottom:1px solid var(--line); padding:8px 0; }
+    .more-background>summary { width:100%; }
+    .background-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; padding:12px 0 20px; }
+    .background-grid h3 { font-size:13px; margin-bottom:10px; }
+    .background-grid p { font-size:12px; margin:0 0 12px; }
+    .writing-item { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px; align-items:baseline; padding:15px 0; border-top:1px solid var(--line); }
+    .writing-item a { font-size:14px; text-decoration:none; line-height:1.7; }
+    .writing-item a:hover { text-decoration:underline; }
+    .writing-date { font:10px/1.8 var(--mono); color:var(--muted); white-space:nowrap; }
+    .writing-archive { border-block:1px solid var(--line); }
+    .writing-archive>summary { width:100%; padding:6px 0; }
+    .archive-list { padding-bottom:14px; }
+    .archive-list .writing-item { padding-block:12px; }
+    .archive-list .writing-item a { font-size:13px; }
+    .contact-section { margin-top:54px; padding:30px 0; border-block:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:24px; }
+    .contact-section h2 { font-size:24px; margin-bottom:6px; }
+    .contact-section p { margin:0; color:var(--muted); font-size:13px; }
+    .email-link { color:var(--accent); font-size:14px; overflow-wrap:anywhere; }
+    footer { padding:24px 0 32px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:10px; color:var(--muted); }
+    footer a { padding-block:4px; }
+    @media(min-width:1100px) { .hero { padding-top:76px; } }
+    @media(max-width:700px) {
+      html { scroll-padding-top:112px; }
+      .wrap { width:calc(100% - 40px); }
+      .nav-row { min-height:80px; padding:12px 0 9px; align-items:flex-start; flex-direction:column; gap:4px; }
+      .wordmark { font-size:16px; }
+      nav { width:100%; justify-content:space-between; gap:10px; }
+      nav a { font-size:11px; padding:7px 0; }
+      .hero { padding:32px 0 29px; grid-template-columns:minmax(0,1fr) 82px; gap:20px 16px; }
+      .hero-copy { display:contents; }
+      .identity { grid-column:1; grid-row:1; align-self:center; }
+      .eyebrow { font-size:9px; letter-spacing:.07em; margin-bottom:8px; }
+      h1 { font-size:31px; letter-spacing:-.045em; }
+      .role { font-size:11px; line-height:1.7; margin:10px 0 0; }
+      .hero-portrait { grid-column:2; grid-row:1; align-self:center; }
+      .portrait { width:82px; height:108px; }
+      .portrait-note { display:none; }
+      .intro, .background, .contact-links { grid-column:1/-1; }
+      .intro { font-size:16px; }
+      .background { margin:0; font-size:13px; }
+      .contact-links { margin:0; gap:7px 17px; }
+      .contact-links a { font-size:12px; }
+      .contact-links .primary,.contact-links .secondary { padding:9px 12px; }
+      .latest { gap:14px; font-size:11px; padding:13px 0; }
+      .latest time { font-size:10px; }
+      section { padding-top:36px; }
+      .section-head { margin-bottom:18px; }
+      h2 { font-size:25px; }
+      .section-note { font-size:9px; }
+      .section-intro { font-size:13px; }
+      .project { grid-template-columns:1fr; gap:17px; padding:23px 0; }
+      .metric { font-size:33px; display:flex; align-items:center; gap:18px; }
+      .metric-label { font-size:11px; margin-top:0; max-width:none; }
+      h3 { font-size:17px; }
+      .project p { font-size:13px; }
+      .project-kicker { font-size:9px; }
+      .tags { font-size:9px; gap:5px 10px; }
+      .publication { padding-left:16px; }
+      .publication h3 { font-size:19px; }
+      .paper-summary { font-size:13px; }
+      .experience-row { grid-template-columns:1fr; gap:6px; padding:20px 0; }
+      .experience-date { font-size:10px; }
+      .education-row { flex-direction:column; gap:7px; }
+      .education-row .experience-date { text-align:left; }
+      .background-grid { grid-template-columns:1fr; gap:14px; }
+      .writing-item { gap:12px; }
+      .writing-item a { font-size:13px; }
+      .writing-date { font-size:9px; }
+      .contact-section { margin-top:36px; align-items:flex-start; flex-direction:column; gap:15px; }
     }
-
-    * { box-sizing: border-box; }
-    body {
-      font-family: var(--sans);
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.65;
-      margin: 0; padding: 0;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    .container { max-width: 820px; margin: 0 auto; padding: 4.5rem 1.5rem; }
-
-    /* --- Header --- */
-    header {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 2.25rem;
-      align-items: start;
-      margin-bottom: 2.4rem;
-      padding-bottom: 1.8rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 14px;
-      object-fit: cover;
-      background-color: var(--surface-2);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .profile-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-
-    .header-text { min-width: 0; }
-
-    h1 {
-      font-size: 2.05rem;
-      font-weight: 720;
-      margin: 0;
-      letter-spacing: -0.03em;
-    }
-
-    .tagline {
-      color: var(--secondary-color);
-      font-size: 0.95rem;
-      margin-top: 0.4rem;
-      font-weight: 430;
-    }
-
-    .bio {
-      margin-top: 1.1rem;
-      color: var(--text-color);
-      font-size: 0.95rem;
-      max-width: 65ch;
-    }
-    .bio p { margin: 0 0 0.7rem; }
-    .bio a {
-      color: var(--text-color);
-      text-decoration: none;
-      border-bottom: 1px solid var(--muted-accent);
-      transition: 0.18s ease;
-    }
-    .bio a:hover { color: var(--accent-color); border-color: currentColor; }
-
-    .links { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    .links a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-size: 0.9rem;
-      border-bottom: 1px solid var(--border-color);
-      transition: 0.18s ease;
-      padding-bottom: 0.05rem;
-    }
-    .links a:hover { border-color: var(--text-color); color: var(--accent-color); }
-
-    /* --- Sections --- */
-    section { margin-top: 2.4rem; }
-    h2 {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--secondary-color);
-      margin: 0 0 1.1rem;
-      font-weight: 650;
-    }
-
-    /* --- News (compact list, no cards) --- */
-    .news-list {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 0.55rem 1.2rem;
-      font-size: 0.92rem;
-      color: var(--text-color);
-    }
-    .news-date {
-      color: var(--secondary-color);
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      padding-top: 0.05rem;
-    }
-    .news-item a {
-      color: var(--text-color);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .news-item a:hover { color: var(--accent-color); border-color: currentColor; }
-
-    /* --- Research interests (prose, no card) --- */
-    .prose {
-      font-size: 0.97rem;
-      max-width: 70ch;
-      color: var(--text-color);
-    }
-
-    /* --- Items (flat entries for experience) --- */
-    .item {
-      padding: 1.0rem 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .item:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .title {
-      font-weight: 650;
-      font-size: 1.04rem;
-      letter-spacing: -0.01em;
-      min-width: 0;
-    }
-
-    .date {
-      font-size: 0.83rem;
-      color: var(--secondary-color);
-      font-family: var(--mono);
-      white-space: nowrap;
-    }
-
-    .org {
-      color: var(--muted-accent);
-      font-size: 0.92rem;
-      font-weight: 560;
-      margin-bottom: 0.45rem;
-    }
-    .org a.org-link {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid var(--border-color);
-      margin-left: 0.45rem;
-      font-weight: 500;
-    }
-    .org a.org-link:hover {
-      color: var(--accent-color);
-      border-color: currentColor;
-    }
-
-    ul { padding-left: 1.1rem; margin: 0.45rem 0 0; list-style-type: square; }
-    li {
-      font-size: 0.91rem;
-      margin-bottom: 0.45rem;
-      color: rgba(21,21,21,0.88);
-    }
-    li b {
-      color: rgba(21,21,21,0.82);
-      font-weight: 650;
-    }
-
-    /* --- Publications (hanging indent, no cards) --- */
-    .pub-list { font-size: 0.93rem; }
-    .pub-item {
-      padding-left: 2.5rem;
-      text-indent: -2.5rem;
-      margin-bottom: 0.85rem;
-      max-width: 75ch;
-      line-height: 1.55;
-    }
-    .pub-tag {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--secondary-color);
-      margin-right: 0.7rem;
-    }
-    .pub-authors { font-weight: 600; }
-    .pub-venue { font-style: italic; }
-    .pub-note { color: var(--secondary-color); font-size: 0.85rem; }
-
-    a.clean-link {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.05rem;
-      transition: 0.18s ease;
-    }
-    a.clean-link:hover { border-color: var(--text-color); color: var(--accent-color); }
-
-    /* --- Education / Honors (compact, dual-line) --- */
-    .compact-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border-color);
-      gap: 1rem;
-    }
-    .compact-item:last-child { border-bottom: none; }
-    .compact-title { font-weight: 600; font-size: 0.97rem; }
-    .compact-sub {
-      color: var(--secondary-color);
-      font-size: 0.88rem;
-      margin-top: 0.15rem;
-    }
-    .compact-date {
-      color: var(--secondary-color);
-      font-family: var(--mono);
-      font-size: 0.83rem;
-      white-space: nowrap;
-    }
-
-    /* --- Skills grid --- */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 0.7rem 1.2rem;
-      font-size: 0.92rem;
-    }
-    .category {
-      font-weight: 650;
-      color: var(--secondary-color);
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    /* --- Writing --- */
-    details {
-      border: none;
-      padding: 0;
-      background: none;
-    }
-    summary {
-      cursor: pointer;
-      list-style: none;
-      color: var(--secondary-color);
-      font-family: var(--mono);
-      font-size: 0.83rem;
-      letter-spacing: 0.02em;
-    }
-    summary::-webkit-details-marker { display: none; }
-    details[open] summary { margin-bottom: 0.8rem; }
-
-    .writing-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 0.45rem 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .writing-item:last-child { border-bottom: none; }
-    .writing-item a {
-      color: var(--text-color);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 0.92rem;
-    }
-    .writing-item a:hover { color: var(--accent-color); border-color: currentColor; }
-    .writing-date {
-      color: var(--secondary-color);
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      white-space: nowrap;
-    }
-
-    footer {
-      margin-top: 3.5rem;
-      font-size: 0.8rem;
-      color: var(--secondary-color);
-      text-align: center;
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.6rem;
-    }
-
-    @media (max-width: 700px) {
-      header { grid-template-columns: 1fr; gap: 1.25rem; }
-      .profile-col { display: contents; }
-      .profile-pic { order: 1; width: 110px; height: 110px; }
-      .header-text { order: 2; }
-      .links {
-        order: 3;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 0.55rem 1rem;
-      }
-      .item-header { flex-direction: column; align-items: flex-start; }
-      .date { margin-top: 0.2rem; }
-      .news-list { grid-template-columns: 1fr; gap: 0.2rem; }
-      .news-date { padding-top: 0.6rem; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .compact-item { flex-direction: column; align-items: flex-start; }
-    }
+    @media(max-width:360px) { .wrap { width:calc(100% - 32px); } h1 { font-size:27px; } .hero { column-gap:12px; } .writing-item { grid-template-columns:1fr; gap:3px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } summary span { transition:none; } }
+    @media print { .topbar,.contact-links,.more-background,.writing-archive,footer a { display:none; } .wrap { width:100%; } .hero { padding-top:0; } body { background:white; } .project,.publication,.experience-row { break-inside:avoid; } }
   </style>
 </head>
-
-<body>
-  <div class="container">
-
-    <!-- ============ HEADER ============ -->
-    <header>
-      <div class="profile-col">
-        <img src="profile.jpg" alt="Matt Chiang" class="profile-pic" />
-
-        <div class="links">
-          <a href="mailto:cymattchiang@gmail.com">Email</a>
-          <a href="resume-cv.pdf" target="_blank" rel="noopener">CV</a>
-          <a href="https://github.com/cymattchiang" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com/in/cymattchiang/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://medium.com/@cymattchiang" target="_blank" rel="noopener">Medium</a>
-          <!-- <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Scholar</a> -->
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap nav-row">
+      <a class="wordmark" href="#top" aria-label="Matt Chiang, back to top">Matt Chiang<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#research">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#writing">Writing</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="identity">
+          <p class="eyebrow">Network systems &amp; architecture</p>
+          <h1>Chung-Yen (Matt) Chiang</h1>
+          <p class="role">M.S. Student, Computer Science and Engineering<br>Seoul National University</p>
+        </div>
+        <p class="intro">My research interests lie in <strong>network systems and architecture</strong>, with a broad focus on the design of efficient and reliable networked systems.</p>
+        <p class="background">I work with Prof. <a href="https://scholar.google.com/citations?user=ZrPrFicAAAAJ" target="_blank" rel="noopener">KyoungSoo Park</a> in the <a href="https://tnet.snu.ac.kr/" target="_blank" rel="noopener">T-Networking Laboratory</a>. Previously, I spent nearly four years at Amazon’s Connectivity Team building and optimizing wireless systems for IoT devices.</p>
+        <div class="contact-links" aria-label="Contact and profiles">
+          <a class="primary" href="mailto:cymattchiang@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="secondary" href="cv/academic.pdf" target="_blank" rel="noopener">Academic CV <span class="pub-language">PDF</span></a>
+          <a href="https://github.com/cymattchiang" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://linkedin.com/in/cymattchiang/" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
       </div>
-
-      <div class="header-text">
-        <h1>Chung-Yen (Matt) Chiang</h1>
-        <p class="tagline">Incoming M.S. Student · Seoul National University · Network Systems</p>
-
-        <div class="bio">
-          <p>
-            I am an incoming M.S. student in Computer Science and Engineering at <a href="https://en.snu.ac.kr/" target="_blank" rel="noopener">Seoul National University</a> (Sep 2026), joining Prof. <a href="https://scholar.google.com/citations?user=ZrPrFicAAAAJ" target="_blank" rel="noopener">KyoungSoo Park</a>'s <a href="https://tnet.snu.ac.kr/" target="_blank" rel="noopener">T-Networking Laboratory</a>.
-          </p>
-          <p>
-            Before grad school, I spent four years on <a target="_blank" rel="noopener">Amazon's Connectivity Team</a> building wireless systems for global IoT devices, most recently leading cross-layer performance work on embedded Wi-Fi platforms.
-          </p>
-        </div>
+      <div class="hero-portrait">
+        <img class="portrait" src="profile.jpg" alt="Portrait of Matt Chiang" width="176" height="210" fetchpriority="high">
+        <p class="portrait-note">Systems &amp; architecture<br>Seoul National University</p>
       </div>
-    </header>
+    </div>
+    <aside class="latest" aria-label="Latest update"><time datetime="2026-09">SEP 2026</time><p>Started my M.S. at SNU’s T-Networking Laboratory.</p></aside>
 
-    <!-- ============ NEWS ============ -->
-    <section id="news">
-      <h2>News</h2>
-      <div class="news-list">
-        <div class="news-date">Sep 2026</div>
-        <div class="news-item">Joining Prof. KyoungSoo Park's T-Networking Laboratory at SNU as an M.S. student.</div>
-
-        <div class="news-date">Apr 2026</div>
-        <div class="news-item">Promoted to Software Development Engineer II (L5) at Amazon Connectivity Team.</div>
-
-        <div class="news-date">Aug 2023</div>
-        <div class="news-item">Started full-time at Amazon Connectivity Team after converting from internship.</div>
-
-        <div class="news-date">2022</div>
-        <div class="news-item">Paper presented at <a href="#publications">CISC 2022</a>; awarded <a href="#honors">MOST Undergraduate Research Scholarship</a>.</div>
-      </div>
-    </section>
-
-    <!-- ============ RESEARCH INTERESTS ============ -->
-    <section id="interests">
-      <h2>Research Interests</h2>
-      <div class="prose">
-        Network Systems · Network Profiling and Optimization.
-      </div>
-    </section>
-
-    <!-- ============ EDUCATION ============ -->
-    <section id="education">
-      <h2>Education</h2>
-
-      <div class="compact-item">
+    <section id="research" aria-labelledby="research-heading">
+      <div class="section-head"><h2 id="research-heading">Selected work</h2><span class="section-note">Prior industry work</span></div>
+      <p class="section-intro">My industry experience spans wireless networking and embedded systems. Two examples from my work at Amazon:</p>
+      <article class="project">
+        <div class="metric">2.36×<span class="metric-label">Wi-Fi throughput<br>10.59 → 25 Mbps</span></div>
         <div>
-          <div class="compact-title">Seoul National University</div>
-          <div class="compact-sub">M.S. in Computer Science and Engineering · Advisor: Prof. KyoungSoo Park</div>
+          <div class="project-kicker">Amazon · Embedded wireless systems</div>
+          <h3>Improving embedded wireless systems</h3>
+          <p>Improved the performance of an embedded wireless platform, delivering <strong>higher throughput for connected devices</strong>.</p>
+          <div class="tags"><span>Embedded systems</span><span>Wireless networking</span></div>
         </div>
-        <div class="compact-date">2026 – 2028</div>
-      </div>
-
-      <div class="compact-item">
+      </article>
+      <article class="project">
+        <div class="metric">76%<span class="metric-label">lower reconnection<br>latency</span></div>
         <div>
-          <div class="compact-title">National Taiwan University of Science and Technology</div>
-          <div class="compact-sub">B.B.A. in Information Management · GPA 4.01/4.30</div>
+          <div class="project-kicker">Amazon · Network reliability</div>
+          <h3>Building more reliable connectivity</h3>
+          <p>Improved connectivity for IoT devices, enabling <strong>faster recovery from network interruptions</strong>.</p>
+          <div class="tags"><span>Network reliability</span><span>IoT systems</span></div>
         </div>
-        <div class="compact-date">2019 – 2023</div>
-      </div>
+      </article>
     </section>
 
-    <!-- ============ PUBLICATIONS ============ -->
-    <section id="publications">
-      <h2>Publications</h2>
-      <div class="pub-list">
-        <div class="pub-item">
-          <span class="pub-tag">[C1]</span><span class="pub-authors">Chung-Yen Chiang</span> and Nai-Wei Lo. &ldquo;<a class="clean-link" href="https://github.com/cymattchiang/undergraduate-research-thesis" target="_blank" rel="noopener">Secure Channels for Smart Manufacturing Systems in Cloud Environments</a>.&rdquo; In <span class="pub-venue">Proceedings of the Cryptology and Information Security Conference (CISC)</span>, 2022. <span class="pub-note">(1st author)</span>
+    <section id="publications" aria-labelledby="publications-heading">
+      <div class="section-head"><h2 id="publications-heading">Publications</h2><span class="section-note">01 / Conference paper</span></div>
+      <article class="publication">
+        <p class="venue">CISC 2022 · Taiwan</p>
+        <h3><a href="thesis/thesis-full-cisc-chinese.pdf" target="_blank" rel="noopener">Secure Channels for Smart Manufacturing Systems in Cloud Environments</a></h3>
+        <p class="authors"><strong>Chung-Yen Chiang</strong> and Nai-Wei Lo<br>Cryptology and Information Security Conference (Taiwan), 2022</p>
+        <p class="paper-summary">Explores secure connectivity between industrial systems and cloud infrastructure.</p>
+        <div class="resource-links">
+          <a href="thesis/thesis-full-cisc-chinese.pdf" target="_blank" rel="noopener">Paper <span class="pub-language">PDF · 中文</span> ↗</a>
+          <a href="thesis/thesis-abstract-most-cisc-english.pdf" target="_blank" rel="noopener">Research summary <span class="pub-language">PDF · EN</span> ↗</a>
+          <a href="https://github.com/cymattchiang/undergraduate-research-thesis" target="_blank" rel="noopener">Repository ↗</a>
         </div>
-      </div>
+      </article>
     </section>
 
-    <!-- ============ RESEARCH EXPERIENCE ============ -->
-    <section id="research">
-      <h2>Research Experience</h2>
-
-      <div class="item">
-        <div class="item-header">
-          <span class="title">Graduate Researcher · T-Networking Laboratory</span>
-          <span class="date">Sep 2026 – Present</span>
+    <section id="experience" aria-labelledby="experience-heading">
+      <div class="section-head"><h2 id="experience-heading">Experience</h2><a class="section-note" href="cv/academic.pdf" target="_blank" rel="noopener">Academic CV ↗</a></div>
+      <article class="experience-row">
+        <div class="experience-date">Sep 2026 – Present</div>
+        <div><h3>T-Networking Laboratory · Seoul National University</h3><p class="experience-role">Graduate Researcher · Advisor: Prof. KyoungSoo Park</p><p>Research interests in network systems and architecture.</p></div>
+      </article>
+      <article class="experience-row" id="industry">
+        <div class="experience-date">Sep 2022 – Jun 2026</div>
+        <div><h3>Amazon · Connectivity Team</h3><p class="experience-role">Software Development Engineer II · Previously SDE I and Intern</p><p>Built embedded Wi-Fi and BLE systems for IoT devices, with a focus on performance, reliability, and power efficiency.</p>
+          <div class="resource-links"><a href="cv/software-industry.pdf" target="_blank" rel="noopener">Industry résumé <span class="pub-language">PDF</span> ↗</a></div>
+          <details><summary>Roles &amp; further contributions <span aria-hidden="true">+</span></summary>
+            <ul>
+              <li><strong>SDE II · Apr – Jun 2026:</strong> Improved wireless system performance and supported firmware deployment across device variants and regions.</li>
+              <li><strong>SDE I · Aug 2023 – Mar 2026:</strong> Improved wireless reliability, responsiveness, and power efficiency; developed secure device provisioning.</li>
+              <li><strong>Intern · Sep 2022 – Jul 2023:</strong> Developed automation to support device interoperability across commercial Wi-Fi routers.</li>
+            </ul>
+          </details>
         </div>
-        <div class="org">Seoul National University · Advisor: Prof. KyoungSoo Park</div>
-        <ul>
-          <li>Joining Prof. Park's group to conduct research in network systems; specific research direction to be determined upon program start.</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <span class="title">Summer Research Intern</span>
-          <span class="date">Jul 2022 – Aug 2022</span>
-        </div>
-        <div class="org">
-          Institute of Information Science, Academia Sinica · Advisor: Prof. Meng Chang Chen
-        </div>
-        <ul>
-          <li>Researched hardware-level sandbox evasion techniques (CPU feature checks, registry artifacts) used by obfuscated malware to detect analysis environments.</li>
-          <li>Reverse-engineered obfuscated malware samples using IDA Pro to identify evasion triggers and anti-analysis behaviors.</li>
-          <li>Implemented a modular detection framework in C and Python extending the Cuckoo Sandbox monitor with new evasion-detection plugins.</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <span class="title">Undergraduate Researcher</span>
-          <span class="date">Jul 2021 – Feb 2022</span>
-        </div>
-        <div class="org">
-          NTUST · Advisor: Prof. Nai-Wei Lo
-        </div>
-        <ul>
-          <li>Designed and implemented Site-to-Site IPsec secure channels for industrial communication between local gateways and AWS VPC; published as 1st author at CISC 2022.</li>
-          <li>Conducted deep packet inspection with Wireshark and benchmarked throughput and latency with iPerf3 and Netperf across multiple IPsec configurations.</li>
-          <li>Investigated ARMv8 Cryptographic Extensions to accelerate encryption on resource-constrained industrial devices.</li>
-        </ul>
-      </div>
+      </article>
+      <article class="experience-row">
+        <div class="experience-date">Jul – Aug 2022</div>
+        <div><h3>Academia Sinica · Institute of Information Science</h3><p class="experience-role">Summer Research Intern · Advisor: Meng Chang Chen</p><p>Worked on security systems and malware analysis, contributing to a sandbox-based analysis framework.</p><div class="resource-links"><a href="thesis/thesis-abstract-academia-sinica-english.pdf" target="_blank" rel="noopener">Research summary <span class="pub-language">PDF · EN</span> ↗</a></div></div>
+      </article>
+      <article class="experience-row">
+        <div class="experience-date">Jul 2021 – Feb 2022</div>
+        <div><h3>National Taiwan University of Science and Technology</h3><p class="experience-role">Undergraduate Researcher · Advisor: Prof. Nai-Wei Lo</p><p>Studied secure networked systems for industrial and cloud environments. First-author paper at <a href="#publications">CISC 2022</a>.</p></div>
+      </article>
     </section>
 
-    <!-- ============ INDUSTRY EXPERIENCE ============ -->
-    <section id="industry">
-      <h2>Industry Experience</h2>
-
-      <div class="item">
-        <div class="item-header">
-          <span class="title">Software Development Engineer II (L5)</span>
-          <span class="date">Apr 2026 – Jun 2026</span>
-        </div>
-        <div class="org">Amazon · Connectivity Team</div>
-        <ul>
-          <li>Conducted cross-layer performance profiling of an end-to-end Wi-Fi data path on FreeRTOS, spanning PHY, SDIO, kernel, and application layers; identified IMI memory access (SDIO), TCP shared-lock and mutex contention (kernel), and application-layer memory contention as root causes, achieving 2.36× throughput improvement (10.59 → 25 Mbps).</li>
-          <li>Designed runtime dynamic NVRAM/CLM loading mechanism for multi-SKU and multi-region firmware deployment from a unified image.</li>
-        </ul>
+    <section id="education" aria-labelledby="education-heading">
+      <div class="section-head"><h2 id="education-heading">Education &amp; background</h2></div>
+      <div class="education-list">
+        <div class="education-row"><div><h3>Seoul National University</h3><p>M.S. in Computer Science and Engineering</p></div><div class="experience-date">2026 – 2028 (expected)</div></div>
+        <div class="education-row"><div><h3>National Taiwan University of Science and Technology</h3><p>B.B.A. in Information Management · GPA 4.01 / 4.30</p></div><div class="experience-date">2019 – 2023</div></div>
       </div>
-
-      <div class="item">
-        <div class="item-header">
-          <span class="title">Software Development Engineer I (L4)</span>
-          <span class="date">Aug 2023 – Mar 2026</span>
-        </div>
-        <div class="org">Amazon · Connectivity Team</div>
-        <ul>
-          <li>Characterized DHCP reconnection behavior under unstable network conditions and designed protocol-level optimizations, reducing reconnection latency by 76%.</li>
-          <li>Conducted experimental tuning of WMM/EDCA QoS parameters under traffic contention, improving p99 latency for latency-sensitive streaming by 24%.</li>
-          <li>Implemented Wi-Fi power-saving and wake-up mechanisms, extending battery-operated IoT device standby from 40 to 65 days.</li>
-          <li>Built a modular BLE provisioning subsystem with end-to-end encryption channel for global SKU deployment.</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <span class="title">Software Development Engineer Intern</span>
-          <span class="date">Sep 2022 – Jul 2023</span>
-        </div>
-        <div class="org">Amazon · Connectivity Team</div>
-        <ul>
-          <li>Developed automated tooling for interoperability characterization across 60+ commercial Wi-Fi routers, building a dataset for cross-vendor connection behavior analysis.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ TEACHING ============ -->
-    <section id="teaching">
-      <h2>Teaching</h2>
-      <div class="item">
-        <div class="item-header">
-          <span class="title">Cybersecurity and AI-based Analytics</span>
-          <span class="date">Fall 2022</span>
-        </div>
-        <div class="org">Teaching Assistant · Dept. of Electrical Engineering, NTUST</div>
-        <ul>
-          <li>Supported instruction of an undergraduate course covering network security fundamentals, threat detection, and machine-learning-based security analytics.</li>
-          <li>Held weekly office hours, graded assignments and exams, and provided guidance for hands-on lab exercises and final projects.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ HONORS & AWARDS ============ -->
-    <section id="honors">
-      <h2>Honors &amp; Awards</h2>
-
-      <div class="compact-item">
-        <div>
-          <div class="compact-title">MOST Undergraduate Research Scholarship</div>
-          <div class="compact-sub">Ministry of Science and Technology, Taiwan</div>
-        </div>
-        <div class="compact-date">2021</div>
-      </div>
-
-      <div class="compact-item">
-        <div>
-          <div class="compact-title">Academic Excellence Award</div>
-          <div class="compact-sub">NTUST — Top 2 of class for three consecutive semesters</div>
-        </div>
-        <div class="compact-date">2021 – 2022</div>
-      </div>
-    </section>
-
-    <!-- ============ SKILLS ============ -->
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="category">Systems</div>
-        <div>Embedded Systems, Wi-Fi &amp; BLE, RTOS (FreeRTOS), Cross-Layer Performance Profiling, BSP/SDK Integration</div>
-
-        <div class="category">Programming</div>
-        <div>C, C++, Python, Shell Scripting</div>
-
-        <div class="category">Tools</div>
-        <div>Linux, GDB / JTAG, perf, ftrace, Wireshark, tcpdump, iperf3, Git</div>
-
-        <div class="category">Languages</div>
-        <div>English (Professional), Mandarin (Native)</div>
-      </div>
-    </section>
-
-    <!-- ============ WRITING ============ -->
-    <section id="writing">
-      <h2>Writing</h2>
-
-      <div class="writing-item">
-        <a href="https://medium.com/@cymattchiang/愚人節不愚人-amazon-第四年-b725ee1d3351" target="_blank" rel="noopener">
-          愚人節不愚人：Amazon 第四年 ↗
-        </a>
-        <span class="writing-date">Apr 2026</span>
-      </div>
-
-      <div class="writing-item">
-        <a href="https://medium.com/@cymattchiang/2026-%E7%B7%B4%E7%BF%92%E6%B8%85%E5%96%AE-%E5%85%81%E8%A8%B1%E8%87%AA%E5%B7%B1%E9%AC%86%E5%BC%9B-%E5%B0%B1%E6%98%AF%E5%B0%8D%E7%94%9F%E6%B4%BB%E6%9C%80%E5%A4%A7%E7%9A%84%E6%BA%AB%E6%9F%94-3dcd7584b50c" target="_blank" rel="noopener">
-          2026 練習清單：允許自己鬆弛，就是對生活最大的溫柔 ↗
-        </a>
-        <span class="writing-date">Dec 2025</span>
-      </div>
-
-      <div class="writing-item">
-        <a href="https://medium.com/@cymattchiang/welcome-to-amazon-af9951137217" target="_blank" rel="noopener">
-          Welcome to Amazon ↗
-        </a>
-        <span class="writing-date">May 2025</span>
-      </div>
-
-      <div class="writing-item">
-        <a href="https://medium.com/@cymattchiang/amazon-connectivity-%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-b3fb5bdfea9e" target="_blank" rel="noopener">
-          Amazon Connectivity 軟體工程師工作心得分享 ↗
-        </a>
-        <span class="writing-date">May 2024</span>
-      </div>
-
-      <details style="margin-top: 1rem;">
-        <summary>Show all writing</summary>
-
-        <div class="writing-item" style="margin-top: 0.5rem;">
-          <a href="https://medium.com/@cymattchiang/online-mcs-%E8%B3%87%E8%A8%8A%E5%88%86%E4%BA%AB%E5%8F%8A%E7%94%B3%E8%AB%8B%E5%BF%83%E5%BE%97-416be10959cc" target="_blank" rel="noopener">
-            Online MCS 資訊分享及申請心得 ↗
-          </a>
-          <span class="writing-date">Mar 2024</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/%E5%8F%B0%E7%81%A3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E8%B3%87%E8%A8%8A%E7%AE%A1%E7%90%86%E7%B3%BB108%E7%B4%9A%E5%9B%9B%E5%B9%B4%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB-60abe9a32238" target="_blank" rel="noopener">
-            台灣科技大學資訊管理系 108 級四年經驗分享 ↗
-          </a>
-          <span class="writing-date">Feb 2024</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/amazon%E6%95%B8%E4%BD%8D%E6%B8%B8%E7%89%A7%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-e5effebcb6e8" target="_blank" rel="noopener">
-            Amazon 數位遊牧心得分享 ↗
-          </a>
-          <span class="writing-date">Feb 2024</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/%E9%9B%85%E6%80%9Doverall-6-5%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-df8d644f76e5" target="_blank" rel="noopener">
-            雅思 Overall 6.5 心得分享 ↗
-          </a>
-          <span class="writing-date">Mar 2023</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/2022-amazon-ring-%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-cc9fbe8ba7b4" target="_blank" rel="noopener">
-            2022 Amazon Ring 實習心得分享 ↗
-          </a>
-          <span class="writing-date">Aug 2023</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/112%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%9D%9E%E6%9C%AC%E7%A7%91%E8%B7%A8%E6%8E%A8%E5%8F%B0%E6%B8%85%E4%BA%A4%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E6%8E%A8%E7%94%84%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-3e30d62107e9" target="_blank" rel="noopener">
-            112 學年度非本科跨推台清交資訊科系推甄心得分享 ↗
-          </a>
-          <span class="writing-date">Nov 2022</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/111%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E8%B3%87%E8%A8%8A%E7%A7%91%E5%AD%B8%E7%A0%94%E7%A9%B6%E6%89%80%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-4364d0b49c6" target="_blank" rel="noopener">
-            111 年度中央研究院資訊科學研究所暑期實習心得分享 ↗
-          </a>
-          <span class="writing-date">Nov 2022</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/110%E5%B9%B4%E5%BA%A6%E7%A7%91%E6%8A%80%E9%83%A8%E5%A4%A7%E5%B0%88%E5%AD%B8%E7%94%9F%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-d7f0bf3b4a9b" target="_blank" rel="noopener">
-            110 年度科技部大專學生研究計畫心得分享 ↗
-          </a>
-          <span class="writing-date">Aug 2022</span>
-        </div>
-
-        <div class="writing-item">
-          <a href="https://medium.com/@cymattchiang/2022-%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E5%AF%A6%E7%BF%92%E9%9D%A2%E8%A9%A6%E5%BF%83%E5%BE%97-%E5%A4%96%E5%95%86-%E6%96%B0%E5%89%B5%E7%AD%89-9ec6c29f29e1" target="_blank" rel="noopener">
-            2022 資訊科系實習面試心得分享 (Amazon / Garmin / 新創等) ↗
-          </a>
-          <span class="writing-date">Apr 2022</span>
+      <details class="more-background"><summary>Honors &amp; technical background <span aria-hidden="true">+</span></summary>
+        <div class="background-grid">
+          <div id="honors"><h3>Honors</h3><p>MOST Undergraduate Research Scholarship<br>Ministry of Science and Technology, Taiwan · 2021</p><p>Academic Excellence Award<br>Top 2 of class for three consecutive semesters · 2021–2022</p></div>
+          <div id="skills"><h3>Technical background</h3><p><strong>Systems</strong><br>Embedded systems, wireless networking, operating systems, firmware integration</p><p><strong>Programming</strong><br>C, C++, Python, Shell</p><p><strong>Tools</strong><br>Linux, GDB/JTAG, Git</p><p><strong>Languages</strong><br>Mandarin (native), English (professional)</p></div>
         </div>
       </details>
     </section>
 
-    <footer>
-      &copy; 2026 Chung-Yen (Matt) Chiang
-    </footer>
-  </div>
+    <section id="teaching" aria-labelledby="teaching-heading">
+      <div class="section-head"><h2 id="teaching-heading">Teaching</h2></div>
+      <article class="experience-row">
+        <div class="experience-date">Fall 2026</div>
+        <div><h3>System Programming</h3><p class="experience-role">Teaching Assistant · Computer Science and Engineering, Seoul National University</p><p>Lead lab sessions, answer student questions, hold TA office hours, and grade exams.</p></div>
+      </article>
+      <article class="experience-row">
+        <div class="experience-date">Fall 2022</div>
+        <div><h3>Cybersecurity and AI-based Analytics</h3><p class="experience-role">Teaching Assistant · Department of Electrical Engineering, NTUST</p><p>Supported office hours, grading, hands-on labs, and final projects.</p></div>
+      </article>
+    </section>
+
+    <section id="writing" aria-labelledby="writing-heading">
+      <div class="section-head"><h2 id="writing-heading">Beyond research</h2><a class="section-note" href="https://medium.com/@cymattchiang" target="_blank" rel="noopener">All on Medium ↗</a></div>
+      <p class="section-intro">Notes on engineering, education, and life. Written primarily in Mandarin.</p>
+      <div class="writing-item">
+        <a href="https://medium.com/@cymattchiang/愚人節不愚人-amazon-第四年-b725ee1d3351" target="_blank" rel="noopener" lang="zh-Hant">
+          愚人節不愚人：Amazon 第四年 ↗
+        </a>
+        <span class="writing-date">Apr 2026</span>
+      </div>
+<div class="writing-item">
+        <a href="https://medium.com/@cymattchiang/amazon-connectivity-%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-b3fb5bdfea9e" target="_blank" rel="noopener" lang="zh-Hant">
+          Amazon Connectivity 軟體工程師工作心得分享 ↗
+        </a>
+        <span class="writing-date">May 2024</span>
+      </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/%E5%8F%B0%E7%81%A3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E8%B3%87%E8%A8%8A%E7%AE%A1%E7%90%86%E7%B3%BB108%E7%B4%9A%E5%9B%9B%E5%B9%B4%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB-60abe9a32238" target="_blank" rel="noopener" lang="zh-Hant">
+            台灣科技大學資訊管理系 108 級四年經驗分享 ↗
+          </a>
+          <span class="writing-date">Feb 2024</span>
+        </div><details class="writing-archive"><summary>More writing <span aria-hidden="true">+</span></summary><div class="archive-list"><div class="writing-item">
+        <a href="https://medium.com/@cymattchiang/2026-%E7%B7%B4%E7%BF%92%E6%B8%85%E5%96%AE-%E5%85%81%E8%A8%B1%E8%87%AA%E5%B7%B1%E9%AC%86%E5%BC%9B-%E5%B0%B1%E6%98%AF%E5%B0%8D%E7%94%9F%E6%B4%BB%E6%9C%80%E5%A4%A7%E7%9A%84%E6%BA%AB%E6%9F%94-3dcd7584b50c" target="_blank" rel="noopener" lang="zh-Hant">
+          2026 練習清單：允許自己鬆弛，就是對生活最大的溫柔 ↗
+        </a>
+        <span class="writing-date">Dec 2025</span>
+      </div>
+<div class="writing-item">
+        <a href="https://medium.com/@cymattchiang/welcome-to-amazon-af9951137217" target="_blank" rel="noopener" lang="zh-Hant">
+          Welcome to Amazon ↗
+        </a>
+        <span class="writing-date">May 2025</span>
+      </div>
+<div class="writing-item" style="margin-top: 0.5rem;">
+          <a href="https://medium.com/@cymattchiang/online-mcs-%E8%B3%87%E8%A8%8A%E5%88%86%E4%BA%AB%E5%8F%8A%E7%94%B3%E8%AB%8B%E5%BF%83%E5%BE%97-416be10959cc" target="_blank" rel="noopener" lang="zh-Hant">
+            Online MCS 資訊分享及申請心得 ↗
+          </a>
+          <span class="writing-date">Mar 2024</span>
+        </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/amazon%E6%95%B8%E4%BD%8D%E6%B8%B8%E7%89%A7%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-e5effebcb6e8" target="_blank" rel="noopener" lang="zh-Hant">
+            Amazon 數位遊牧心得分享 ↗
+          </a>
+          <span class="writing-date">Feb 2024</span>
+        </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/%E9%9B%85%E6%80%9Doverall-6-5%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-df8d644f76e5" target="_blank" rel="noopener" lang="zh-Hant">
+            雅思 Overall 6.5 心得分享 ↗
+          </a>
+          <span class="writing-date">Mar 2023</span>
+        </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/2022-amazon-ring-%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-cc9fbe8ba7b4" target="_blank" rel="noopener" lang="zh-Hant">
+            2022 Amazon Ring 實習心得分享 ↗
+          </a>
+          <span class="writing-date">Aug 2023</span>
+        </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/112%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%9D%9E%E6%9C%AC%E7%A7%91%E8%B7%A8%E6%8E%A8%E5%8F%B0%E6%B8%85%E4%BA%A4%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E6%8E%A8%E7%94%84%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-3e30d62107e9" target="_blank" rel="noopener" lang="zh-Hant">
+            112 學年度非本科跨推台清交資訊科系推甄心得分享 ↗
+          </a>
+          <span class="writing-date">Nov 2022</span>
+        </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/111%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E8%B3%87%E8%A8%8A%E7%A7%91%E5%AD%B8%E7%A0%94%E7%A9%B6%E6%89%80%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-4364d0b49c6" target="_blank" rel="noopener" lang="zh-Hant">
+            111 年度中央研究院資訊科學研究所暑期實習心得分享 ↗
+          </a>
+          <span class="writing-date">Nov 2022</span>
+        </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/110%E5%B9%B4%E5%BA%A6%E7%A7%91%E6%8A%80%E9%83%A8%E5%A4%A7%E5%B0%88%E5%AD%B8%E7%94%9F%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-d7f0bf3b4a9b" target="_blank" rel="noopener" lang="zh-Hant">
+            110 年度科技部大專學生研究計畫心得分享 ↗
+          </a>
+          <span class="writing-date">Aug 2022</span>
+        </div>
+<div class="writing-item">
+          <a href="https://medium.com/@cymattchiang/2022-%E8%B3%87%E8%A8%8A%E7%A7%91%E7%B3%BB%E5%AF%A6%E7%BF%92%E9%9D%A2%E8%A9%A6%E5%BF%83%E5%BE%97-%E5%A4%96%E5%95%86-%E6%96%B0%E5%89%B5%E7%AD%89-9ec6c29f29e1" target="_blank" rel="noopener" lang="zh-Hant">
+            2022 資訊科系實習面試心得分享 (Amazon / Garmin / 新創等) ↗
+          </a>
+          <span class="writing-date">Apr 2022</span>
+        </div></div></details>
+    </section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <div><h2 id="contact-heading">Let’s connect.</h2><p>For research conversations and professional inquiries.</p></div>
+      <a class="email-link" href="mailto:cymattchiang@gmail.com">cymattchiang@gmail.com ↗</a>
+    </section>
+    <footer><span>© 2026 Chung-Yen (Matt) Chiang · Updated October 2026</span><a href="#top">Back to top ↑</a></footer>
+  </main>
+  <script>
+    // Section links remain usable without JavaScript; this adds a scroll position cue.
+    const navLinks = [...document.querySelectorAll('nav a')];
+    const targets = navLinks.map(link => document.querySelector(link.getAttribute('href')));
+    let scheduled = false;
+    function updateNavigation() {
+      const offset = document.querySelector('.topbar').offsetHeight + 90;
+      let active = null;
+      for (const target of targets) if (target.getBoundingClientRect().top <= offset) active = target.id;
+      for (const link of navLinks) {
+        if (link.hash === '#' + active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
+      scheduled = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!scheduled) { scheduled = true; requestAnimationFrame(updateNavigation); }
+    }, { passive: true });
+    window.addEventListener('resize', updateNavigation);
+    updateNavigation();
+  </script>
 </body>
 </html>
